@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            width: 100%;
+        }
+        #ball {
+            width: 30px;
+            height: 30px;
+            background: #69c;
+            border-radius: 50%;
+            position: fixed;
+            transition: left 1s linear, top 1s ease-in;
+        }
+    </style> 
+    <title>抛物线</title>
+</head>
+<body>
+    <div id="ball"></div>
+    <script>
+        var ball = document.getElementById('ball')
+        document.body.onclick = function(e) {
+            console.log(e.pageX, e.pageY)
+            ball.style.top = `${e.pageY}px`
+            ball.style.left = `${e.pageX}px`
+            ball.style.transition = 'left 0s, top 0s'
+            setTimeout(() => {
+                ball.style.top = `${window.innerHeight}px`
+                ball.style.left = '0px'
+                ball.style.transition = 'left 1s linear, top 1s ease-in'
+            }, 20)
+        }
+    </script>
+</body>
+</html>
