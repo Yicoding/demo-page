@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #demo {
+            height: 100px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <a href="#/">根路由</a> <br>
+    <a href="#/a">a路由</a> <br>
+    <a href="#/b">b路由</a>
+    <div id="demo"></div>
+    <script>
+        window.addEventListener('hashchange', () => {
+            var hash = location.hash.slice(1)
+            var demo = document.getElementById('demo')
+            if (hash === '/') {
+                demo.style.background = 'blue'
+            } else if (hash === '/a') {
+                demo.style.background = 'green'
+            } else {
+                demo.style.background = '#69c'
+            }
+        })
+    </script>
+</body>
+</html>

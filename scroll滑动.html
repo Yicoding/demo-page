@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scroll</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        .rule-box {
+            position: absolute;
+            right: 0;
+            z-index: 98;
+            padding: 15px 10px;
+            width: 20px;
+            background: #FD4D05;
+            border: 1px solid #F73504;
+            height: auto;
+            text-align: center;
+            border-right: 0;
+            border-radius: 5px 0 0 5px;
+            color: #fff;
+            transition: all 0.5s;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="rule-box" id="ruleBox" style="top: 200px;">
+        <div class="art-rule">活动规则</div>
+    </div>
+    modle <br>
+    hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>
+    end
+    <script>
+        window.onload = () => {
+            var cheight = document.body.clientHeight
+            document.getElementById('ruleBox').style.top = cheight / 2 + 'px'
+            console.log(cheight / 2)
+            window.addEventListener('scroll', () => {
+               var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+               document.getElementById('ruleBox').style.top = (cheight / 2 + scrollTop) + 'px'
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+ <head>
+  <title></title>
+ </head>
+ <body>
+  <ul>
+   <li><a href="#/1">/1: blue</a></li>
+   <li><a href="#/2">/2: green</a></li>
+   <li><a href="#/3">/3: yellow</a></li>
+  </ul>
+  <script>
+  var content = document.querySelector('body');
+  function _router(config){
+   this.config = config ? config : {}; 
+  } 
+  _router.prototype = {
+   event:function(str,callback){
+    var events = str.split(' ');
+    for (var i in events) window.addEventListener(events[i],callback,false);
+   },
+   init: function() {
+    this.event('load hashchange',this.refresh.bind(this));
+    return this;
+   },
+   refresh: function() {
+    this.currentUrl = location.hash.slice(1) || '/';
+    this.config[this.currentUrl]();
+   },
+   route: function(path,callback){
+    this.config[path] = callback || function(){};
+   }
+  }
+  function router (config){
+   return new _router(config).init();
+  }
+  var Router = router({
+   '/' : function(){content.style.backgroundColor = 'white';},
+   '/1': function(){content.style.backgroundColor = 'blue';},
+   '/2': function(){content.style.backgroundColor = 'green';}
+  })
+  Router.route('/3',function(){
+   content.style.backgroundColor = 'yellow';
+  })
+  </script>
+ </body>
+</html>
+<script> 
+</script>
