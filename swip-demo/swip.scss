@@ -1,0 +1,137 @@
+html {
+    height: 100%;
+}
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    color:#000;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    .swiper-slide {
+        text-align: center;
+        background: #fff;
+        position: relative;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+}
+.bg{
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.bg-one{
+    background-image: url(../img/swip/01-bg.png);
+}
+.bg-two{
+    background-image: url(../img/swip/02-bg.png);
+}
+.bg-three{
+    background-image: url(../img/swip/03-bg.png);
+}
+.bg-fore{
+    background-image: url(../img/swip/04-bg.png);
+}
+.bg-five{
+    background-image: url(../img/swip/05-bg.png);
+}
+.content{
+    position: absolute;
+    width: 40%;
+    height: 19.19%;
+    color: #fff;
+    bottom: 0.75rem;
+    .header{
+        font-size: 0.4rem;
+    }
+    .text{
+        margin-top: 0.35rem;
+        font-size: 0.3rem;
+        font-weight: 400;
+        color: #E0E0E0;
+        .text-top, .text-bottom{
+            line-height: 0.45rem;
+        }
+    }
+    .next{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        .next-up{
+            display: block;
+            width: 0.2rem;
+            height: 0.2rem;
+            border: solid #fff;
+            border-width: 0 0.04rem 0.04rem 0;
+            -webkit-transform:rotate(45deg);
+            transform:rotate(45deg);
+            margin-bottom: -0.1rem;
+        }
+        .next-down{
+            display: block;
+            width: 0.2rem;
+            height: 0.2rem;
+            border: solid #fff;
+            border-width: 0 0.04rem 0.04rem 0;
+            -webkit-transform:rotate(45deg);
+            transform:rotate(45deg);
+        }
+    }
+}
+.down{
+    width: 0.42rem;
+    height: 0.47rem;
+    position: absolute;
+    left: 0.33rem;
+    bottom: 0.36rem;
+    background-image: url(../img/swip/down.gif);
+    background-size: 100%;
+}
+@mixin item($width, $height, $top, $left, $bg){
+    width: $width;
+    height: $height;
+    position: absolute;
+    top: $top;
+    left: $left;
+    background-image: $bg;
+    background-size: 100% 100%;
+}
+.list-one-a{
+    @include item(4.75rem,19%,21.7%,2.23rem,url(../img/swip/01-list-one.png));
+}
+.list-one-b{
+    @include item(5.46rem,16%,40.63%,0.42rem,url(../img/swip/01-list-two.png));
+}
+.list-two-a{
+    @include item(1.8rem,12.4%,31.4%,0.96rem,url(../img/swip/02-list-one.png));
+}
+.list-two-b{
+    @include item(1.8rem,12.4%,40.6%,1.22rem,url(../img/swip/02-list-two.png));
+}
+.list-two-c{
+    @include item(1.8rem,12.4%,42.8%,2.44rem,url(../img/swip/02-list-three.png));
+}
+.list-fore-a{
+    @include item(3.97rem,41%,32.23%,0.83rem,url(../img/swip/04-list.png));
+}
+.list-five-a{
+    @include item(4.08rem,25.5%,24.55%,0.86rem,url(../img/swip/05-list.png));
+}
