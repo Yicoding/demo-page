@@ -4,274 +4,96 @@
   <meta charset="utf-8">
   <title>Swiper demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1 ,user-scalable=no">
-
-  <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="animate.min.css">
-
-  <!-- Demo styles -->
-  <style>
-    html {
-      height: 100%;
-    }
-    body {
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      color:#000;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-    .swiper-container {
-      width: 100%;
-      height: 100%;
-    }
-    .swiper-slide {
-      text-align: center;
-      background: #fff;
-      position: relative;
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
-    .bg{
-      height: 100%;
-      width: 100%;
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-    }
-    .bg-one{
-      background-image: url(img/01-bg.png);
-    }
-    .bg-two{
-      background-image: url(img/02-bg.png);
-    }
-    .bg-three{
-      background-image: url(img/03-bg.png);
-    }
-    .bg-fore{
-      background-image: url(img/04-bg.png);
-    }
-    .bg-five{
-      background-image: url(img/05-bg.png);
-    }
-    .content{
-      position: absolute;
-      width: 40%;
-      height: 19.19%;
-      color: #fff;
-      bottom: 0.75rem;
-    }
-    .header{
-      font-size: 0.4rem;
-    }
-    .text{
-      margin-top: 0.35rem;
-      font-size: 0.3rem;
-      font-weight: 400;
-      color: #E0E0E0;
-    }
-    .text-top, .text-bottom{
-      line-height: 0.45rem;
-    }
-    .next{
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #fff;
-    }
-    .next-up{
-      display: block;
-      width: 0.2rem;
-      height: 0.2rem;
-      border: solid #fff;
-      border-width: 0 0.04rem 0.04rem 0;
-      -webkit-transform:rotate(45deg);
-      transform:rotate(45deg);
-      margin-bottom: -0.1rem;
-    }
-    .next-down{
-      display: block;
-      width: 0.2rem;
-      height: 0.2rem;
-      border: solid #fff;
-      border-width: 0 0.04rem 0.04rem 0;
-      -webkit-transform:rotate(45deg);
-      transform:rotate(45deg);
-    }
-    .down{
-      width: 0.42rem;
-      height: 0.47rem;
-      position: absolute;
-      left: 0.33rem;
-      bottom: 0.36rem;
-      background-image: url(img/down.gif);
-      background-size: 100%;
-    }
-    .list-one-a{
-      width: 4.75rem;
-      height: 18%;
-      position: absolute;
-      top: 21.7%;
-      left: 2.23rem;
-      background-image: url(img/01-list-one.png);
-      background-size: 100% 100%;
-    }
-    .list-one-b{
-      width: 5.46rem;
-      height: 16%;
-      position: absolute;
-      top: 40.63%;
-      left: 0.42rem;
-      background-image: url(img/01-list-two.png);
-      background-size: 100% 100%;
-    }
-    .list-two-a{
-      width: 1.8rem;
-      height: 12.4%;
-      position: absolute;
-      top: 31.4%;
-      left: 0.96rem;
-      background-image: url(img/02-list-one.png);
-      background-size: 100% 100%;
-    }
-    .list-two-b{
-      width: 1.8rem;
-      height: 12.4%;
-      position: absolute;
-      top: 40.6%;
-      left: 1.22rem;
-      background-image: url(img/02-list-two.png);
-      background-size: 100% 100%;
-    }
-    .list-two-c{
-      width: 1.8rem;
-      height: 12.4%;
-      position: absolute;
-      top: 42.8%;
-      left: 2.44rem;
-      background-image: url(img/02-list-three.png);
-      background-size: 100% 100%;
-    }
-    .list-fore-a{
-      width: 3.97rem;
-      height: 41%;
-      position: absolute;
-      top: 32.23%;
-      left: 0.83rem;
-      background-image: url(img/04-list.png);
-      background-size: 100% 100%;
-    }
-    .list-five-a{
-      width: 4.08rem;
-      height: 25.5%;
-      position: absolute;
-      top: 24.55%;
-      left: 0.86rem;
-      background-image: url(img/05-list.png);
-      background-size: 100% 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="./swip.css">
 </head>
 <body>
-  <!-- Swiper -->
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <a class="down"></a>
-        <div class="bg bg-one"></div>
-        <div class="list-one-a ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.8s" swiper-animate-delay="0s"></div>
-        <div class="list-one-b ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.8s" swiper-animate-delay="0s"></div>
-        <div class="content">
-          <div class="header">全球极速行情</div>
-          <div class="text ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay="0s">
-            <div class="text-top">沪深超级Level - 2</div>
-            <div class="text-bottom">港美市场一键直达</div>
-          </div>
-          <div class="next">
-            <i class="next-up"></i>
-            <i class="next-down"></i>
-          </div>
+        <div class="swiper-slide">
+            <a class="down" href="https://appcert.eastmoney.com/h52n"></a>
+            <div class="bg bg-one"></div>
+            <div class="list-one-a ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="2s" swiper-animate-delay="0s"></div>
+            <div class="list-one-b ani" swiper-animate-effect="bounceInLeft" swiper-animate-duration="2s" swiper-animate-delay="0s"></div>
+            <div class="info ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="0s">
+                <div class="header">全球极速行情</div>
+                <div class="line"></div>
+                <div class="text">
+                    <div class="text-list">沪深超级Level - 2</div>
+                    <div class="text-list">港美市场一键直达</div>
+                </div>
+                <div class="next">
+                    <div class="next-ani"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="down"></div>
-        <div class="bg bg-two"></div>
-        <div class="list-two-a ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.8s" swiper-animate-delay="0s"></div>
-        <div class="list-two-b ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.8s" swiper-animate-delay="0s"></div>
-        <div class="list-two-c ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.8s" swiper-animate-delay="0s"></div>
-        <div class="content">
-          <div class="header">多账户便捷交易</div>
-          <div class="text ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay="0s">
-            <div class="text-top">万2.5快捷开户</div>
-            <div class="text-bottom">3大账户灵活切换</div>
-          </div>
-          <div class="next">
-            <i class="next-up"></i>
-            <i class="next-down"></i>
-          </div>
+        <div class="swiper-slide">
+            <a class="down" href="https://appcert.eastmoney.com/h52n"></a>
+            <div class="bg bg-two"></div>
+            <div class="list-two-a ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5" swiper-animate-delay="0.5s"></div>
+            <div class="list-two-b ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="1s"></div>
+            <div class="list-two-c ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="1.5s"></div>
+            <div class="info ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="0s">
+                <div class="header">多账户便捷交易</div>
+                <div class="line"></div>
+                <div class="text">
+                    <div class="text-list">万2.5快捷开户</div>
+                    <div class="text-list">3大账户灵活切换</div>
+                </div>
+                <div class="next">
+                    <div class="next-ani"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="down"></div>
-        <div class="bg bg-three"></div>
-        <div class="content">
-          <div class="header">个性化资讯动态</div>
-          <div class="text ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay="0s">
-            <div class="text-top">精选要闻快讯</div>
-            <div class="text-bottom">7&times;24小时滚动呈现</div>
-          </div>
-          <div class="next">
-            <i class="next-up"></i>
-            <i class="next-down"></i>
-          </div>
+        <div class="swiper-slide">
+            <a class="down" href="https://appcert.eastmoney.com/h52n"></a>
+            <div class="bg bg-three"></div>
+            <div class="list-three-a ani" swiper-animate-effect="fadeIn" swiper-animate-duration="3s" swiper-animate-delay="0.5s"></div>
+            <div class="info ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="0s">
+                <div class="header">个性化资讯动态</div>
+                <div class="line"></div>
+                <div class="text">
+                    <div class="text-list">精选要闻快讯</div>
+                    <div class="text-list">7&times;24小时滚动呈现</div>
+                </div>
+                <div class="next">
+                    <div class="next-ani"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="down"></div>
-        <div class="bg bg-fore"></div>
-        <div class="list-fore-a ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.8s" swiper-animate-delay="0s"></div>
-        <div class="content">
-          <div class="header">AI“慧”炒股</div>
-          <div class="text ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay="0s">
-            <div class="text-top">智能选股盯盘</div>
-            <div class="text-bottom">您的专业投资顾问</div>
-          </div>
-          <div class="next">
-            <i class="next-up"></i>
-            <i class="next-down"></i>
-          </div>
+        <div class="swiper-slide">
+            <a class="down" href="https://appcert.eastmoney.com/h52n"></a>
+            <div class="bg bg-four"></div>
+            <div class="list-four-a ani" swiper-animate-effect="rotateIn" swiper-animate-duration="2s" swiper-animate-delay="0.5s"></div>
+            <div class="info ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="0s">
+                <div class="header">AI“慧”炒股</div>
+                <div class="line"></div>
+                <div class="text">
+                    <div class="text-list">智能选股盯盘</div>
+                    <div class="text-list">您的专业投资顾问</div>
+                </div>
+                <div class="next">
+                    <div class="next-ani"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="down"></div>
-        <div class="bg bg-five"></div>
-        <div class="list-five-a ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.8s" swiper-animate-delay="0s"></div>
-        <div class="content">
-          <div class="header">股民专属社区</div>
-          <div class="text ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay="0s">
-            <div class="text-top">股吧大V人气互动</div>
-            <div class="text-bottom">问答广场答疑解惑</div>
-          </div>
+        <div class="swiper-slide">
+            <a class="down" href="https://appcert.eastmoney.com/h52n"></a>
+            <div class="bg bg-five"></div>
+            <div class="list-five-a ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2s" swiper-animate-delay="0.5s"></div>
+            <div class="info ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1.5s" swiper-animate-delay="0s">
+                <div class="header">股民专属社区</div>
+                <div class="line"></div>
+                <div class="text text-last">
+                    <div class="text-list">股吧大V人气互动</div>
+                    <div class="text-list">问答广场答疑解惑</div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-
-  <!-- Swiper JS -->
+</div>
   <script src="swiper.min.js"></script>
   <script src="swiper.animate.min.js"></script>
-
-  <!-- Initialize Swiper -->
   <script>
     //定义一个方法并执行
     (function(doc, win) {
@@ -304,7 +126,15 @@
         }, 
         slideChangeTransitionEnd: function(){ 
           swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
-        } 
+        },
+        touchEnd: function(swiper){
+          TR=this.translate;
+          var jumpHeight = window.innerHeight
+          if(TR < -jumpHeight*4){
+            this.setTranslate(TR);
+            window.location.href ="https://appcert.eastmoney.com/h52n";
+          };
+        },
       }
     });
   </script>
