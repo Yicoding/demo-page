@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="main">
+		<span v-html="content"></span>
+	</div>
+	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+	<script>
+		new Vue({
+			el: '#main',
+			filters: {
+				changeLine (value) {
+					return value.slice(0, 2) + `
+					` + value.slice(2)
+				}
+			},
+			data: {
+				content: null,
+			},
+			created () {
+				this.content = '我是第一行' + '<br/>' + '我是第二行'
+			}
+		})
+	</script>
+</body>
+</html>

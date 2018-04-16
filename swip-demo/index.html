@@ -129,7 +129,10 @@
         },
         touchEnd: function(swiper){
           TR=this.translate;
-          var jumpHeight = window.innerHeight
+        //   var jumpHeight = window.innerHeight
+          var jumpHeight = this.height
+        //   console.log(jumpHeight)
+        //   console.log(window.innerHeight)
           if(TR < -jumpHeight*4){
             this.setTranslate(TR);
             window.location.href ="https://appcert.eastmoney.com/h52n";

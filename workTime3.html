@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>workTime</title>
+	<!-- 引入样式 -->
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+	<style>
+		/*common*/
+		html {
+			height: 100%;
+		}
+		body {
+		    font:17px "microsoft yahei",Arial,Helvetica,sans-serif;
+		    color:#000000;
+		    margin:0;
+		    padding:0;
+		    height: 100%;
+		    overflow: hidden;
+		}
+		ul,ol,p,h1,h2,h3,h4,h5,h6,dl,dt,dd {
+		    margin:0;
+		    padding:0;
+		    list-style:none;
+		}
+		img {
+			vertical-align:middle;
+		}
+		.left {
+			float: left;
+		}
+		.right {
+			float: right;
+		}
+		/*self*/
+		header {
+			line-height: 40px;
+			font-size: 14px;
+			background-color: #26a2ff;
+			text-align: center;
+			color: #fff;
+			width: 100%;
+			position: fixed;
+			top: 0;
+			z-index: 999;
+		}
+		.rowLine {
+			line-height: 30px;
+			font-size: 16px;
+			padding: 10px;
+			overflow: hidden;
+			border-top: 1px solid #ddd;
+		}
+		.div-font {
+			color: #888;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<header>考勤页面</header>
+		<div style="margin-top: 50px;"></div>
+		<div class="rowLine">
+			<div class="left">查看日期</div>
+			<div class="right div-font" v-text="datePicker"></div>
+		</div>
+		<div class="rowLine">
+			<div class="left">门店名称</div>
+			<div class="right div-font" v-text="store.name"></div>
+		</div>
+		<div class="rowLine">
+			<div class="left">省份</div>
+			<div class="right div-font" v-text="store.province"></div>
+		</div>
+		<div class="rowLine">
+			<div class="left">城市</div>
+			<div class="right div-font" v-text="store.city"></div>
+		</div>
+		<div class="rowLine">
+			<div class="left">区域</div>
+			<div class="right div-font" v-text="store.district"></div>
+		</div>
+		<div class="rowLine">
+			<div class="left">地址</div>
+			<div class="right div-font" v-text="store.address"></div>
+		</div>
+  		<!-- 照片弹框 -->
+	    <el-dialog title="照片" :visible.sync="dialogImg" size="full">
+	      <img :src="srcImg" alt="照片" style="max-width: 100%;"/>
+	    </el-dialog>
+	    <div style="padding: 10px; background-color: #eee;">考勤详情</div>
+	    <el-collapse v-if="dialogTableOne.length > 0">
+	        <el-collapse-item v-for="todo in dialogTableOne" :key="todo.promoterName">
+	          <template slot="title">
+            	<span style="font-size: 0.8em;">{{todo.promoterName}}/{{todo.promoterMobile}}</span>
+	          </template>
+            <ul>
+              <li v-for="li in todo.data" style="border-left: 1px solid #eaeefa; padding: 20px;position: relative;">
+                <span v-if="li.submitter" style="display: block; width: 15px; height: 15px; border-radius: 50%; background: #20a0ff; position: absolute;top: 24px; left: -8px;"></span>
+                <span v-if="!li.submitter" style="display: block; width: 20px; height: 20px; border-radius: 50%; background: #fff; border: 2px solid #20a0ff; position: absolute;top: 20px; left: -12px;"></span>
+                {{li.submitDateTime | timeFilter}} / <span v-if="li.submitter">打卡类型：</span> <span style="color: rgb(69, 202, 193);">{{li.workTimeType.label}}</span> <span v-if="li.submitLocation && li.submitLocation.address">/打卡地点：{{li.submitLocation.address}}</span> <span v-if="li.submitter">/</span> <el-button v-if="li.submitter" size="small" @click="openImg(li.picture)">查看照片</el-button>
+              </li>
+            </ul>
+	        </el-collapse-item>
+      	</el-collapse>
+	</div>
+	<!-- 先引入 Vue -->
+	<!-- <script src="./axios.js"></script> -->
+	<!-- <script src="./axios.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+	<!-- 引入组件库 -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
+		var main = new Vue({
+			el: '#main',
+			data: {
+				datePicker: '2017-10-24',
+				valueTime: null,
+				store: { // 门店信息
+					id: null,
+			        name: null,
+			        province: null,
+			        city: null,
+			        district: null,
+			        address: null
+		      	},
+		        dialogImg: false,
+		        sn: null,
+		        dialogTableOne: [],
+		        srcImg: null
+			},
+			created () {
+				// axios.get(this.resource + )
+				// alert(location.href.split('?')[1].split('&'))
+				var urlParams = location.href.split('?')[1].split('&')
+				// alert(decodeURIComponent(urlParams[3].split('=')[1]))
+				this.datePicker = urlParams[0].split('=')[1]
+				this.store.name = decodeURIComponent(urlParams[1].split('=')[1])
+				this.store.id = urlParams[2].split('=')[1]
+				this.sn = decodeURIComponent(urlParams[3].split('=')[1])
+				this.store.province = decodeURIComponent(urlParams[4].split('=')[1])
+				this.store.city = decodeURIComponent(urlParams[5].split('=')[1])
+				this.store.district = decodeURIComponent(urlParams[6].split('=')[1])
+				this.store.address = decodeURIComponent(urlParams[7].split('=')[1])
+				// alert(urlParams[2].split('=')[1])
+				axios.get('/resource/store/' + urlParams[2].split('=')[1] + '/project/' + decodeURIComponent(urlParams[3].split('=')[1]), {params: {date: this.datePicker, type: 'workTimeData'}}).then((res) => {
+				// axios.get('http://starding.stardrin.cn/resource/store/' + this.store.id + '/project/' + this.sn, {params: {date: this.datePicker, type: 'workTimeData'}}).then((res) => {
+					// alert(res.data.data)
+					this.dialogTableOne = res.data.data
+				}).catch((err) => {
+					alert('fail:' + JSON.stringify(err))
+				})
+			},
+			mounted () {
+
+			},
+			methods: {
+				// 查看考勤照片
+			    openImg (value) {
+			      this.dialogImg = true
+			      this.srcImg = '/resource/wechat/pub/getImg?imgName=' + value
+			    },
+			},
+		})
+	</script>
+</body>
+</html>

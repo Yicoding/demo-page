@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#test {
+			width: 50%;
+			height: 50px;
+			margin: 50px auto;
+			background: red;
+		}
+		#menu {
+			width: 70px;
+			background: blue;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="test">hi</div>
+	<div id="menu">see me</div>
+	<script>
+		document.getElementById("test").oncontextmenu = function(e){
+		　　return false;
+		}
+		var menu = document.getElementById('menu')
+		document.getElementById("test").onmousedown = function(e){
+		　　if(e.button ==2){
+		// 　　　　alert("你点了右键");
+				console.log(e)
+				console.log(e.clientY)
+				console.log(e.clientX)
+				menu.style.top = e.clientY + 3 + 'px'
+				menu.style.left = e.clientX + 3 + 'px'
+				console.log(e.target.innerHTML)
+		　　}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="mss" id="mss"/>
+      
+  	<form action="./index.html">
+        <input type="text" value="name" name="name"/>   
+ 	</form>	
+ 	<script type="text/javascript">
+
+   window.onload=function(){
+     
+        daojishi();
+     }
+      var counttime=90*60;//总秒钟
+     
+      function daojishi(){
+      if(counttime>=0){
+             var ms = counttime%60;//余数 89%60==29秒
+             var mis = Math.floor(counttime/60);//分钟
+             if(mis>=60){
+              var hour=Math.floor(mis/60);
+     mis=Math.floor((counttime-hour*60*60)/60);
+              document.getElementById("mss").value=hour+"小时"+mis+"分"+ms+"秒数";
+             }else if(mis>=1){
+              document.getElementById("mss").value=mis+"分"+ms+"秒数"; 
+             }else{
+              document.getElementById("mss").value=ms+"秒数"; 
+             }
+   
+              counttime--;
+              vartt =  window.setTimeout("daojishi()",1000);
+   }else{
+       window.clearTimeout(vartt);
+       window.confirm("考试时间结束,请单击提交"); 
+       tijiao();
+      
+   }
+   
+     }
+     
+     function tijiao(){
+        document.forms[0].submit();
+     }
+
+</script>
+</body>
+</html>

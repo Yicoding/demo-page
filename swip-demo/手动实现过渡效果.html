@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,user-scalable=no">
+    <title>Swiper demo</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./swiper.min.css">
+
+    <!-- Demo styles -->
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color:#000;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .swiper-wrapper{
+            transition-delay:.3s;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            position: relative;
+        }
+        .swiper-slide:nth-child(2){
+            background:#3183ff;
+            color:#fff;}
+        .swiper-slide p{
+            transform:translateX(-200px);
+            opacity:0;
+            transition:all .4s;}
+        .ani-slide p{
+            transform:translateX(0);
+            opacity:1;
+        }
+        .swiper-slide div{
+            width: 1rem;
+            height: 1rem;
+            background: #69c;
+            position: absolute;
+            right: -2rem;
+        }
+        .ani-slide div{
+            top: 2rem;
+            right: 2rem;
+            animation: slideRight 2s ease;
+        }
+        @keyframes slideRight {
+            0%{
+                right: -2rem;
+            }
+            70%{
+                right: 2.3rem;
+            }
+            85%{
+                right: 1.7rem;
+            }
+            100%{
+                right: 2rem;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <p>Slide 1</p>
+                <div class="item"></div>
+            </div>
+            <div class="swiper-slide">
+                <p>Slide 2</p>
+            </div>
+            <div class="swiper-slide">
+                <p>Slide 3</p>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div> 
+    </div>
+
+<!-- Swiper JS -->
+<script src="./swiper.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    //定义一个方法并执行
+    (function(doc, win) {
+        var docEl = doc.documentElement;
+        resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
+        var recalc = function() {
+            var clientWidth = docEl.clientWidth;
+            if(!clientWidth) return;
+            docEl.style.fontSize = 50 * ((clientWidth >= 750 ? 750 : clientWidth) / 375) + 'px';
+            /*docEl.style.fontSize = 50 * (clientWidth / 320) + 'px';*/
+        };
+        if(!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+    var swiper = new Swiper('.swiper-container',{
+		direction : 'vertical',
+		followFinger : false,
+		speed:800,
+		mousewheel: true,
+		pagination : {
+			el:'.swiper-pagination',
+		},
+		on:{
+			init:function(swiper){
+                console.log(this.slides['0'])
+		        slide=this.slides.eq(0);
+			    slide.addClass('ani-slide');
+		    },
+			transitionStart: function(){
+			    for(i=0;i<this.slides.length;i++){
+			    	slide=this.slides.eq(i);
+			        slide.removeClass('ani-slide');
+				}
+		    },
+			transitionEnd: function(){
+				slide=this.slides.eq(this.activeIndex);
+			    slide.addClass('ani-slide');
+				console.log(this.activeIndex)
+		    },
+		}
+    });
+</script>
+</body>
+</html>

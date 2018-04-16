@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="main">
+		<div contenteditable="true" style="height: 100px; width: 100px; border: 1px solid #aaa; -webkit-user-select: text">这是一段可编辑的段落。请试着编辑该文本。</div>
+		<div style="height: 10px;"></div>
+		<div contenteditable="true"
+		 v-html="myHtmlCode"
+		 @input="onDivInput($event)">
+		</div>
+	</div>
+	<script src="https://unpkg.com/vue"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#main',
+			data: {
+				myHtmlCode: 'kebiaji ',
+			},
+			methods: {
+				onDivInput: function(e) {
+					this.myHtmlCode = e.target.innerHTML;
+					console.log('Text: %o', this.myHtmlCode );
+				},
+			}
+		})
+		
+	</script>
+</body>
+</html>

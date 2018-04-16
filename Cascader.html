@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cascader</title>
+	<style>
+		select {
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<select v-model="valueA">
+			<option v-for="item in province" :value="item.id">{{item.name}}</option>
+		</select>
+		<select v-model="valueB">
+			<option v-for="item in city" :value="item.id">{{item.name}}</option>
+		</select>
+		<select v-model="valueC">
+			<option v-for="item in site" :value="item.id">{{item.name}}</option>
+		</select>
+	</div>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<script>
+		var main = new Vue({
+			el: '#main',
+			data: {
+				valueA: '',
+				valueB: '',
+				valueC: '',
+				province: [
+					{id: 1, name: '浙江',city: [
+						{id: 1, name: '杭州', site: [
+							{id: 1, name: '杭州-1'},
+							{id: 2, name: '杭州-2'}
+						]},
+						{id: 2, name: '湖州', site: [
+							{id: 1, name: '湖州-1'},
+							{id: 2, name: '湖州-2'}
+						]}
+					]},
+					{id: 2, name: '上海', city:[
+						{id: 1, name: '浦东', site: [
+							{id: 1, name: '浦东-21'},
+							{id: 2, name: '浦东-2'}
+						]},
+						{id: 2, name: '静安', site: [
+							{id: 1, name: '静安-1'},
+							{id: 2, name: '静安-2'}
+						]}
+					]}
+				],
+				city: [],
+				site: [],
+			},
+			watch: {
+				valueA (data) {
+					this.valueB = ''
+					console.log(data)
+					for (var k in this.province) {
+						if (data == this.province[k].id) {
+							this.city = this.province[k].city
+							return false
+						}
+					}
+				},
+				valueB (data) {
+					this.site = []
+					this.valueC = ''
+					console.log(data)
+					for (var k in this.city) {
+						if (data == this.city[k].id) {
+							this.site = this.city[k].site
+							return false
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

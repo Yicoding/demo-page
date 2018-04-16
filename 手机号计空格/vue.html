@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Document</title>
+</head>
+<body>
+	<div id="main">
+		<!--<input id="cont" type="text" placeholder="请输入手机号1" @input="inputChange" maxlength="13" ref="aaa"/>-->
+		<input id="cont" type="text" placeholder="请输入手机号1" @input="inputChange" maxlength="13" v-model="name"/>
+		<button @click="show">show</button>
+	</div>
+	<script src="https://unpkg.com/vue"></script>
+	<script>
+		var main = new Vue({
+			el: '#main',
+			data: {
+				name: null
+			},
+			methods: {
+				show () {
+					console.log(this.$refs.aaa.value)
+				},
+				inputChange (e) {
+					console.log(e.target.value)
+					var val = e.target.value
+			        var arr = val.split(' ');
+			        var Arr = [];
+			        var Str = '';
+			        for(var i = 0 ; i < arr.length ; i ++){
+			            var arr1 = arr[i].split('');
+			            for(var j = 0 ; j < arr1.length ; j ++){
+			                Arr.push(arr1[j]);
+			            }
+			        }
+			        // console.log(Arr);
+			        if(Arr.length > 3 && Arr.length <=7){
+			            Arr.splice(3,0,' ');
+			        }else if(Arr.length > 7){
+			            Arr.splice(7,0,' ');
+			            Arr.splice(3,0,' ');
+			        }
+			        Arr.forEach(function(ele,index){
+			            Str += ele;
+			        })
+			        console.log(Str)
+			        // this.value = Str
+			        // e.target.value = Str
+			        this.name = Str
+				}
+			}
+		})
+		// document.getElementById('cont').oninput = function(e) {
+		// 	var val = $(this).val();
+	 //        var arr = val.split(' ');
+	 //        var Arr = [];
+	 //        var Str = '';
+	 //        for(var i = 0 ; i < arr.length ; i ++){
+	 //            var arr1 = arr[i].split('');
+	 //            for(var j = 0 ; j < arr1.length ; j ++){
+	 //                Arr.push(arr1[j]);
+	 //            }
+	 //        }
+	 //        // console.log(Arr);
+	 //        if(Arr.length > 3 && Arr.length <=7){
+	 //            Arr.splice(3,0,' ');
+	 //        }else if(Arr.length > 7){
+	 //            Arr.splice(7,0,' ');
+	 //            Arr.splice(3,0,' ');
+	 //        }
+	 //        Arr.forEach(function(ele,index){
+	 //            Str += ele;
+	 //        })
+	 //        console.log(Str)
+	 //        this.value = Str
+		// }
+		// $('#cont').on('input',function (e) {
+		// 	var val = $(this).val();
+	 //        var arr = val.split(' ');
+	 //        var Arr = [];
+	 //        var Str = '';
+	 //        for(var i = 0 ; i < arr.length ; i ++){
+	 //            var arr1 = arr[i].split('');
+	 //            for(var j = 0 ; j < arr1.length ; j ++){
+	 //                Arr.push(arr1[j]);
+	 //            }
+	 //        }
+	 //        // console.log(Arr);
+	 //        if(Arr.length > 3 && Arr.length <=7){
+	 //            Arr.splice(3,0,' ');
+	 //        }else if(Arr.length > 7){
+	 //            Arr.splice(7,0,' ');
+	 //            Arr.splice(3,0,' ');
+	 //        }
+	 //        Arr.forEach(function(ele,index){
+	 //            Str += ele;
+	 //        })
+	 //        $(this).val(Str);
+		// })
+	</script>
+	<!--<div id="main">
+		<div style="height: 100px;"></div>
+		<input id="cont" type="text" placeholder="请输入手机号1" maxlength="13"/>
+	</div>
+	<script src="https://unpkg.com/vue"></script>
+	<script>
+		new Vue({
+			el: '#main',
+			data: {
+				name: null,
+				SSS: [],
+			},
+			watch: {
+				// name (value) {
+				// 	this.name = value.trim()
+				// }
+			},
+			mounted () {
+				document.getElementById('cont').addEventListener('input',e => {
+					let val = e.target.value
+					let arr = val.split('')
+					// console.log(arr)
+					console.log(arr)
+					let aArr = []
+					let Str = ''
+					for (let i = 0; i < arr.length; i ++) {
+						// let arr1 = arr[i].split('')
+						// for (let j = 0; j < arr1.length; j ++) {
+						// 	aArr.push(arr1[j])
+						// }
+						aArr.push(arr[i])
+					}
+					// console.log(aArr)
+					if (aArr.length == 4) {
+						aArr.splice(3,0,' ')
+					} else if (aArr.length == 7) {
+						aArr.splice(7,0,' ')
+						// aArr.splice(3,0,' ')
+					}
+					console.log(aArr)
+					aArr.forEach((item) => {
+						Str += item
+					})
+					// console.log(Str)
+					// e.target.value = Str
+				})
+				
+			},
+			methods: {
+				downTent (e) {
+					// this.SSS.splice(0,0,' ')
+					// console.log(this.SSS)
+					// var Str = ''
+					// this.SSS.forEach((item) => {
+					// 	Str += item
+					// })
+					// console.log(Str.length)
+					// // alert(e.target.value)
+					let val = e.target.value
+					let arr = val.split('')
+					// alert(arr)
+					console.log(arr)
+					let aArr = []
+					let Str = ''
+					for (let i = 0; i < arr.length; i ++) {
+						let arr1 = arr[i].split('')
+						for (let j = 0; j < arr1.length; j ++) {
+							aArr.push(arr1[j])
+						}
+						// aArr.push(arr[i])
+					}
+					if (aArr.length > 3 && aArr.length <=7) {
+						aArr.splice(3,0,' ')
+					} else if (aArr.length > 7) {
+						aArr.splice(7,0,' ')
+						aArr.splice(3,0,' ')
+					}
+					console.log(aArr)
+					aArr.forEach((item) => {
+						Str += item
+					})
+					console.log(Str)
+					console.log(document.getElementById('cont').value)
+					document.getElementById('cont').value = Str
+					// // e.target.value = Str
+					// this.name = Str
+					// for (let i = 0; i < arr.length; i ++) {
+					// 	let arr1 = arr[i].split('')
+					// 	for (let j = 0; j < arr1.length; j ++) {
+					// 		Arr.push(arr1[j])
+					// 	}
+					// 	aArr.push(arr[i])
+					// }
+					// console.log(aArr)
+					// if(aArr.length > 3 && aArr.length <=7){
+			  //          aArr.splice(3,0,' ');
+			  //      }else if(aArr.length > 7){
+			  //          aArr.splice(7,0,' ');
+			  //          aArr.splice(3,0,' ');
+			  //      }
+			       // aArr.forEach(function(ele,index){
+			       //     Str += ele;
+			       // })
+			       // e.target.value = Str
+			       // e.target.value = aArr
+			       // alert(aArr)
+
+			       // this.name = aArr
+
+					// e.target.value = aArr
+		    		// if (e.keyCode != 8) {
+		    		// 	// alert('hi')
+		    		// 	if(e.target.value.length==3||e.target.value.length==8){e.target.value+='-'}
+		    		// } else {
+		    		// 	e.target.value = e.target.value.trim()
+		    		// }
+		    		// e.target.value = e.target.value.trim()
+				}
+			}
+		})
+	</script>-->
+</body>
+</html>

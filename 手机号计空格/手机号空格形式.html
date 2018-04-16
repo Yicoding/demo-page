@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Document</title>
+</head>
+<body>
+	<div id="main">
+		<input type="text" placeholder="请输入手机号a" maxlength="13" @keydown="downTent" v-model="name"/>
+	</div>
+	<script src="https://unpkg.com/vue"></script>
+	<script>
+		new Vue({
+			el: '#main',
+			data: {
+				name: null,
+			},
+			watch: {
+				name (value) {
+					this.name = value.trim()
+				}
+			},
+			methods: {
+				downTent (e) {
+					// alert(e.keyCode)
+		    		if (e.keyCode != 8) {
+		    			if(e.target.value.length==3||e.target.value.length==8){e.target.value+=' '}
+		    		} else {
+		    			e.target.value = e.target.value.trim()
+		    		}
+				}
+			}
+		})
+	</script>
+</body>
+</html>
