@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="main">
+        {{info}}
+        {{msg}}
+        <todo-list :content="content"></todo-list>
+        <todo-item></todo-item>
+    </div>
+    <div id="app">
+        {{msg}}
+    </div>
+    <script>
+        // 全局组件
+        Vue.component('todo-list',{
+            props: ['content'],
+            template: `
+            <div>
+                <ul>
+                    <li v-for="(item, index) in list" v-text="item"></li>
+                </ul>
+                <template>
+                    <div>{{content}}</div>
+                </template>
+            </div>`,
+            data() {
+                return {
+                    list: [1,2,3]
+                }
+            }
+        })
+        // 局部组件
+        var TodoItem = {
+            template: `<div>todoItem</div>`
+        }
+        new Vue({
+            el: '#main',
+            components: {
+                TodoItem 
+            },
+            data: {
+                info: 'main',
+                msg: 'main-msg',
+                content: 'content'
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'app-msg'
+            }
+        })
+        app.msg = 'chang'
+    </script>
+</body>
+</html>
