@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .box-none{
+            margin: 30px;
+            width: 200px;
+            height: 80px;
+            background: #69c;
+            border-radius: 15px;
+            position: relative;
+        }
+        .solid-down{
+            border-top: 20px solid #69c;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            position: absolute;
+            left: 50px;
+            bottom: -20px;
+        }
+        .box-border{
+            margin: 30px;
+            width: 200px;
+            height: 80px;
+            background: #69c;
+            border-radius: 15px;
+            position: relative;
+            border: 5px solid #aaa;
+        }
+        .border-down{
+            width: 20px;
+            height: 20px;
+            background: #69c;
+            border: solid #aaa;
+            border-width: 0 0 5px 5px;
+            position: absolute;
+            left: 50px;
+            bottom: -16px;
+            transform: rotate(-45deg);
+        }
+    </style>
+</head>
+<body>
+    不带边框：
+    <div class="box-none">
+        <div class="solid-down"></div>
+    </div>
+    带边框：
+    <div class="box-border">
+        <div class="border-down"></div>
+    </div>
+</body>
+</html>

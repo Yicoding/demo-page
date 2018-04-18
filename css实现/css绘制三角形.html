@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .solid-all{
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 50px solid blue;
+            border-right: 50px solid red;
+            border-bottom: 50px solid green;
+            border-left: 50px solid yellow;
+        }
+        .solid-up{
+            display: inline-block;
+            /* width: 0;
+            height: 0;
+            border: 50px solid transparent;
+            border-bottom: 50px solid black; */
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid red;
+        }
+        .solid-down{
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 50px solid #6c6;
+        }
+        .solid-left{
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 25px solid transparent;
+            border-bottom: 25px solid transparent;
+            border-right: 50px solid #66c;
+        }
+        .solid-right{
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-left: 100px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="solid-all"></div> <br>
+    <div class="solid-up"></div> <br>
+    <div class="solid-down"></div> <br>
+    <div class="solid-left"></div> <br>
+    <div class="solid-right"></div> <br>
+</body>
+</html>
