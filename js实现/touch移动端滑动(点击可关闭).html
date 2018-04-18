@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>touch</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        .container{
+            position: relative;
+            height: 50px;
+        }
+        .box {
+            background: rgb(102, 172, 204);
+            transition: all .3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .info{
+            width: 80px;
+            height: 50px;
+            float: right;
+            line-height: 50px;
+            text-align: center;
+            font-size: 18px;
+            background: #e4393c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info" onclick="closeMe()">关闭</div>
+        <div class="box" id="box"></div>
+    </div>
+    <script>
+        var flag = true
+        var box = document.getElementById('box')
+        var startLevel,endLevel,startVertical,endVertical
+        box.addEventListener('touchstart', (e) => {
+            startLevel = e.targetTouches['0'].pageX
+            startVertical = e.targetTouches['0'].pageY
+        })
+        box.addEventListener('touchmove', (e) => {
+            endLevel = e.changedTouches['0'].pageX
+            endVertical = e.changedTouches['0'].pageY
+            if (startLevel > endLevel) { // 左滑
+                var slide = startLevel - endLevel
+                if (flag) {
+                    if (slide < 80) {
+                        box.style.right = slide + 'px'
+                    } else {
+                        box.style.right = 80 + 'px'
+                        flag = false
+                    }
+                }
+            } else {
+                flag = true
+                box.style.right = 0
+            }
+        })
+        box.addEventListener('touchend', (e) => {
+            endLevel = e.changedTouches['0'].pageX
+            endVertical = e.changedTouches['0'].pageY
+            if (startLevel - endLevel > 30) {
+                box.style.right = 80 + 'px'
+            } else {
+                box.style.right = 0
+            }
+        })
+        function closeMe() {
+            box.style.right = 0
+        }
+    </script>
+</body>
+</html>

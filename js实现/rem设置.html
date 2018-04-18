@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .btn {
+            line-height: 1rem;
+            text-align: center;
+            border: none;
+            outline: 0;
+            font-size: 0.65rem;
+            background: #69c;
+            color: #fff;
+            font-weight: 300;
+            padding: 5px 10px;
+        }
+        .demo {
+            height: 2rem;
+            background: #6c6;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">登 录</div>
+    <br>
+    <div class="demo"></div>
+    <script>
+        // window.onload = function() {
+        //     getRem()
+        // }
+        // window.onresize = function() {
+        //     getRem()
+        // }
+        // function getRem() {
+        //     var html = document.documentElement
+        //     var width = document.body.clientWidth || document.documentElement.clientWidth
+        //     html.style.fontSize = width/15 + 'px'
+        //     console.log(width/15)
+        // }
+        //定义一个方法并执行
+        (function(doc, win) {
+            var docEl = doc.documentElement;
+            resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
+            var recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if(!clientWidth) return;
+                docEl.style.fontSize = 50 * ((clientWidth >= 750 ? 750 : clientWidth) / 375) + 'px';
+            };
+            if(!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</body>
+</html>

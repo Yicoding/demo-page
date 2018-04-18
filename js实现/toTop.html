@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>无标题文档</title>
+  <style>
+    html{
+      height: 100%;
+    }
+    body{
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+    .top{
+      display: none;
+      width: 20px;
+      height: 20px;
+      background: #69c;
+      color: #fff;
+      position: fixed;
+      right: 10px;
+      bottom: 50px;
+      font-style: normal;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+  </head>
+<body>
+  top <br>
+  <div style="height: 3000px;"></div>
+  bottom
+  <i id="top" class="top" onclick="toTop()">&uarr;</i>
+  <script>
+    window.onload = function() {
+      window.addEventListener('scroll', function() {
+        console.log(document.documentElement.scrollTop)
+        var scrollTop = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+        if (document.documentElement.scrollTop >= scrollTop/2) {
+          document.getElementById('top').style.display = 'block'
+        } else {
+          document.getElementById('top').style.display = 'none'
+        }
+      })
+    }
+    function toTop() {
+      var scrollAll = document.documentElement.scrollTop
+      var step = Math.ceil(scrollAll/20)
+      var timer = setInterval(() => {
+        scrollAll -= step
+        if (scrollAll < 20) {
+          document.documentElement.scrollTop = 0
+          clearInterval(timer)
+          return
+        }
+        document.documentElement.scrollTop = scrollAll
+      }, 20)
+    }
+
+  </script>
+</body>
+</html>
