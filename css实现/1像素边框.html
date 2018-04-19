@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 20px auto;
+            width:80%;
+            height: 80px;
+            position: relative;
+        }
+        .box:after{
+            content: '';
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid #ea5504;
+            transform: scale(0.5, 0.5);
+            -webkit-transform: scale(0.5, 0.5);
+            transform-origin: top left;
+            -webkit-transform-origin: top left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
