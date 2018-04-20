@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>换肤</title>
+    <style>
+        .box{
+            width: 60%;
+            margin: 50px auto;
+            background: black;
+            color: #fff;
+            text-align: center;
+            line-height: 70px;
+        }
+        .theme-w .box{
+            background: #66c;
+            color: #e4393c;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" onclick="change()">
+        <h2>点我换肤</h2>
+    </div>
+    <script>
+        var flag = 'b'
+        var result = location.search.match(/color=(\w+)/)
+        if (result) {
+            document.body.className = "theme-" + result[1]
+            flag = 'w'
+        }
+        function change() {
+            if (flag === 'b') {
+                location.href = location.pathname + '?color=w'
+            } else {
+                location.href = location.pathname
+            }
+        }
+    </script>
+</body>
+</html>
