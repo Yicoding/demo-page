@@ -7,8 +7,22 @@
     <title>Document</title>
 </head>
 <body>
+    <h3>1.基本操作：</h3>
+    <p>添加更改文件 --> 本地提交 --> 推送远端</p>
     <p>git add *</p>
     <p>git commit -m 'commit info'</p>
-    <p>git push origin branch</p>
+    <p>git fetch</p>
+    <p>git merge 'branchname'</p>
+    <p>git push origin 'branchname'</p>
+    
+    <h3>2.新建分支：</h3>
+    <p>新建本地分支 --> 切回主分支 --> 删除新建的分支</p>
+    <p>git checkout -b new</p>
+    <p>git checkout master</p>
+    <p>git branch -d new</p>
+
+    <h3>3.新建分支并推送到远端：</h3>
+    <p>git checkout -b new</p>
+    <p>git push origin new</p>
 </body>
 </html>
