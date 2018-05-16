@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Zero Clipboard Test</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<style>
+    input,textarea{width:100%;}
+</style>
+</head>
+<body>
+    <h3>Android配置地址</h3>
+    <input id="and_text" value="http://180.163.69.167:8090/curcfg/android/v1.1/default_config_trade.txt" readonly="readonly"/>
+    <button id="and_button"><b>点击全选</b></button>
+    <h3>IOS配置地址</h3>
+    <input id="ios_text" value="http://180.163.69.167:8090/curcfg/ios/v1.1/default_trade_json_ios.txt" readonly="readonly"/>
+    <button id="ios_button"><b>点击全选</b></button>
+    <h3>粘贴复制内容</h3>
+    <textarea></textarea>
+</body>
+</html>
+<script type="text/javascript">
+var andText = document.getElementById("and_text");
+var andBtn = document.getElementById("and_button");
+var iosText = document.getElementById("ios_text");
+var iosBtn = document.getElementById("ios_button");
+
+andBtn.onclick = function(){
+    selectText(andText,0,andText.value.length);
+}
+iosBtn.onclick = function(){
+    selectText(iosText,0,iosText.value.length);
+}
+function selectText(textBox, startIndex, endIndex) {/*文本框,起始位置,结束位置*/
+    if (textBox.setSelectionRange) {
+        textBox.setSelectionRange(startIndex, endIndex);
+    }else{
+        textBox.select();
+    }
+    textBox.focus();
+}
+</script>
