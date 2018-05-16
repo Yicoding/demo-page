@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-2.1.4.min.js" ></script>
+		<style>
+			table tbody td,table th{
+				border:  1px solid #737373;
+				height: 40px;
+				text-align: center;
+				min-width: 50px;
+			}
+			tr td{
+				border:  1px solid #737373;
+			}
+		</style>
+	</head>
+	<body>
+		<div >
+			<table cellspacing="0" cellpadding="0" width="700px">
+				<thead>
+					<tr>
+	                        <th>工艺</th>
+	                        <th>加工机器</th>
+	                        <th>面积（cm²）</th>
+	                        <th>版费（元）</th>
+	                        <th>免版费件数（ >= N ）</th>
+	                        <th>加工费（ 元/件 ）</th>
+					</tr>
+                </thead>
+				<tbody id="tableTbody">
+					
+				</tbody>
+				
+			</table>
+		</div>
+		
+		<script>
+			$(function(){
+					var data=[
+					        {
+					            "aa": "绣花",
+					            "bb": "加工机器",
+					            "cc": "进口绣花机",
+					            "dd": 10,
+					            "ee": 0,
+					            "ff": 20
+					        },
+					        {
+					            "aa": "绣花",
+					            "bb": "加工机器",
+					            "cc": "进口绣花机",
+					            "dd": 10,
+					            "ee": 21,
+					            "ff": 100
+					        },
+					         {
+					            "aa": "绣花",
+					            "bb": "进口机器",
+					            "cc": "进口绣花机",
+					            "dd": 10,
+					            "ee": 21,
+					            "ff": 100
+					        }
+					    ]
+					var tr=""
+					$.each(data,function(index, item){
+						
+						// var td="<tr><td>"+item.aa+"</td>" +
+						// "<td>"+item.bb+"</td>" +
+						// "<td>"+item.cc+"</td>" +
+						// "<td>"+item.dd+"</td>" +
+						// "<td>"+item.ee+"</td>" +
+						// "<td>"+item.ff+"</td></tr>" 
+						var td = `<tr>
+									<td>${item.aa}</td>
+									<td>${item.bb}</td>
+									<td>${item.cc}</td>
+									<td>${item.dd}</td>
+									<td>${item.ee}</td>
+									<td>${item.ff}</td>
+								  </tr>`
+						tr= tr +td;
+						
+					})
+					   
+				$("#tableTbody").append(tr)	  
+				tableTbody
+
+				// 合并代码
+				window.onload = function(){
+					var tab = document.getElementById("tableTbody");
+					var maxCol = 2, val, count, start; // 2代表合并前两列
+				
+					for(var col = maxCol-1; col >= 0 ; col--){
+						count = 1;
+						val = "";
+						for(var i=0; i<tab.rows.length; i++){
+							if(val == tab.rows[i].cells[col].innerHTML){
+								count++;
+							}else{
+								if(count > 1){ //合并
+									start = i - count;
+									tab.rows[start].cells[col].rowSpan = count;
+									for(var j=start+1; j<i; j++){
+										tab.rows[j].cells[col].style.display = "none";
+									}
+									count = 1;
+								}
+								val = tab.rows[i].cells[col].innerHTML;
+							}
+						}
+						if(count > 1 ){ //合并，最后几行相同的情况下
+							start = i - count;
+							tab.rows[start].cells[col].rowSpan = count;
+							for(var j=start+1; j<i; j++){
+								tab.rows[j].cells[col].style.display = "none";
+							}
+						}
+					}
+				};
+			});
+		</script>
+	</body>
+</html>
