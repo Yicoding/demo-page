@@ -10,27 +10,23 @@
 </head>
 
 <body>
-<input name="" datavalue="输入文字" class="ipt" placeholder="输入文字">
+<input name="" datavalue="输入文字" class="ipt">
 </body>
 <script src="./jquery.min.js"></script>
 <script  type="text/javascript">
     $(function(){
-       function placeholder(target){
-           
-                $(target).val($(target).attr("datavalue")).addClass("inp");
-                $(target).focus(function() {
-                    if($(this).val() == $(this).attr("datavalue")) {
-                        $(this).val("").removeClass("inp");
-                    } 
-                    
-                })
-                $(target).blur(function(){
-                    if($(this).val() == "" || $(this).val() == $(this).attr("datavalue")) {
-                        $(this).val($(target).attr("datavalue")).addClass("inp");
-                    }
-                })
-        }
-placeholder(".ipt")
-})
+            $(target).val($(target).attr("datavalue")).addClass("inp");
+            $(target).focus(function() {
+                if($(this).val() == $(this).attr("datavalue")) {
+                    $(this).val("").removeClass("inp");
+                } 
+            })
+            $(target).blur(function(){
+                if($(this).val() == "" || $(this).val() == $(this).attr("datavalue")) {
+                    $(this).val($(target).attr("datavalue")).addClass("inp");
+                }
+            })
+            placeholder(".ipt")
+    })
 </script>
 </html>
