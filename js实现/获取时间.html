@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 任意形式的时间格式转换
+        function changedate(time, format) {
+            var t = new Date(time);
+            var tf = function(i) {return (i < 10 ? '0' : '') + i};
+            return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a) {
+                switch(a) {
+                    case 'yyyy':
+                    return tf(t.getFullYear());
+                    break;
+                    case 'MM':
+                    return tf(t.getMonth() + 1);
+                    break;
+                    case 'mm':
+                    return tf(t.getMinutes());
+                    break;
+                    case 'dd':
+                    return tf(t.getDate());
+                    break;
+                    case 'HH':
+                    return tf(t.getHours());
+                    break;
+                    case 'ss':
+                    return tf(t.getSeconds());
+                    break;
+                }
+            })
+        } 
+
+        // 获取年月日时分秒
+        function nowDate() {
+            var date = new Date()
+            var year = date.getFullYear()
+            var month = date.getMonth() + 1
+            if (month < 10) month = `0${month}`
+            var day = date.getDate()
+            if (day < 10) day = `0${day}`
+            var hour = date.getHours()
+            if (hour < 10) hour = `0${hour}`
+            var minute = date.getMinutes()
+            if (minute < 10) minute = `0${minute}`
+            var second = date.getSeconds()
+            if (second < 10) second = `0${second}`
+            return `${year}-${month}-${day} ${hour}:${minute}:${second}`
+        }
+        console.log(nowDate())
+    </script>
+</body>
+</html>
