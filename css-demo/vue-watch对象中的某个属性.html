@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <input type="text" v-model="user.name">
+        <hr>
+        <input type="text" v-model="form.phone">
+        <hr>
+        <p>{{user.name}}</p>
+        <hr>
+        <p>{{form.phone}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#main',
+            data: {
+                user: {
+                    name: null
+                },
+                form: {
+                    phone: null
+                }
+            },
+            watch: {
+                'user.name'(val) {
+                    console.log(val)
+                },
+                form: {
+                    handler(val) {
+                        console.log(val.phone)
+                    },
+                    deep: true
+                }
+            },
+        })
+    </script>
+</body>
+</html>

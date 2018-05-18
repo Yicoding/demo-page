@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 160px;
+            padding: 30px;
+            background-color: #beceeb;
+        }
+        .child {
+            height: 100%;
+            background-color: #cd0000;
+        }
+        .border-box {
+            box-sizing: border-box;
+        }
+        .rel {
+            position: relative;
+        }
+        .rel > .child {
+            position: absolute;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="child">content-child</div>
+    </div>
+    <div class="box border-box">
+        <div class="child">border-child</div>
+    </div>
+    <div class="box rel">
+        <div class="child">position-box</div>
+    </div>
+</body>
+</html>

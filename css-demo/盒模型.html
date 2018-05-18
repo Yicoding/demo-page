@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盒模型</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .box {
+            height: 100px;
+            padding: 20px;
+            border: 5px solid black;
+            margin: 30px;
+            border-radius: 2em 1em 4em / 0.5em 3em;
+        }
+        header {
+            border: 2px solid #e4393c;
+            height: 30px;
+            margin: 5px; 
+            box-shadow: 10px 10px 10px 5px black;
+        }
+        /*border三角形原理*/
+        .triangle {
+            width:0;
+            height:0;
+            border-width:30px;
+            border-style:solid;
+            border-color:#c03 #fc0 #69c #6c6;
+        }
+        .tri-up {
+            width:0;
+            height:0;
+            border-width:0 21px 21px 21px;
+            border-style:solid;
+            border-color:transparent transparent #69c transparent;
+        }
+        .tri-down {
+            width:0;
+            height:0;
+            border-width:21px 21px 0 21px;
+            border-style:solid;
+            border-color:#c03 transparent transparent transparent;
+        }
+        .tri-left {
+            width:0;
+            height:0;
+            border-width:21px 21px 21px 0;
+            border-style:solid;
+            border-color:transparent #fc0 transparent transparent;
+        }
+        /*右*/
+        .tri-right {
+            width:0;
+            height:0;
+            border-width:21px 0 21px 21px;
+            border-style:solid;
+            border-color:transparent transparent transparent #6c6;
+        }
+        .border-image {
+            border: 10px solid #eee;
+            padding: 15px;
+            border-image: url(border.png) 30 round;
+        }
+        .one-liner {
+            height: 200px;
+            width: 200px;
+            background: linear-gradient(red, blue)
+        }
+        .two-liner {
+            height: 200px;
+            width: 200px;
+            background: linear-gradient(to right, red, green)
+        }
+        .three-linear {
+            height: 200px;
+            width: 200px;
+            background: linear-gradient(to bottom right, #69c, #fc0);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <header>
+            header
+        </header>
+    </div>
+    <div style="height: 50px;"></div>
+    <!-- border三角形原理 -->
+    <div class="triangle"></div>
+    <!-- 上 -->
+    <div class="tri-up"></div>
+    <!-- 下 -->
+    <div class="tri-down"></div>
+    <!-- 左 -->
+    <div class="tri-left"></div>
+    <!-- 右 -->
+    <div class="tri-right"></div>
+    border-image:
+    <div class="border-image"></div>
+    <hr>
+    默认 从上到下：
+    <div class="one-liner"></div>
+    <hr>
+    从左到右：
+    <div class="two-liner"></div>
+    <hr>
+    对角：
+    <div class="three-linear"></div>
+    <div style="height: 100px;"></div>
+</body>
+</html>

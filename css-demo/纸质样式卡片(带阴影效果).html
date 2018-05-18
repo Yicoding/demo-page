@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>纸质样式卡片</title> 
+<style>
+div.card {
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+div.header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  font-size: 40px;
+}
+
+div.container {
+  padding: 10px;
+}
+.box
+{
+	width: 100px;
+  height: 1em;
+	background:#ff0000;
+	transition: all 2s;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+/* .box:hover
+{
+	width:500px;
+	
+} */
+.parent {
+  height: 300px;
+  border: 1px solid #fc0;
+}
+.child {
+  vertical-align: middle;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  background: #6c6;
+}
+.child-two {
+  vertical-align: middle;
+  display: inline-block;
+  width: 50px;
+  height: 100px;
+  margin-left: 20px;
+  background: #69c;
+}
+.parent > img {
+  vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<h2>卡片</h2>
+
+<p>box-shadow 属性用来可以创建纸质样式卡片:</p>
+
+<div class="card">
+  <div class="header">
+    <h1>1</h1>
+  </div>
+
+  <div class="container">
+    <p>January 1, 2016</p>
+  </div>
+</div>
+
+<hr>
+过渡：<button onclick="toggle()">toggle</button>
+<div class="box">过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡过渡</div>
+<hr>
+<div class="parent">
+  <div class="child">one</div>
+  <div class="child-two">tow</div>
+  <!-- <img src="border.png" alt=""> -->
+</div>
+<script>
+  let flag = true
+  let box = document.querySelector('.box')
+  function toggle() {
+    if (flag) {
+      box.style.height = '100px'
+      flag = false
+      box.style.display = 'block'
+      // box.style.transform = 'translateY(50px)'
+    } else {
+      box.style.display = 'none'
+      flag = true
+    }
+  }
+</script>
+</body>
+</html>

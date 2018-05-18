@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>图片滤镜</title> 
+<style>
+img {
+    width: 33%;
+    height: auto;
+    float: left; 
+    max-width: 235px;
+}
+
+.blur {-webkit-filter: blur(4px);filter: blur(4px);}
+.brightness {-webkit-filter: brightness(250%);filter: brightness(250%);}
+.contrast {-webkit-filter: contrast(180%);filter: contrast(180%);}
+.grayscale {-webkit-filter: grayscale(100%);filter: grayscale(100%);}
+.huerotate {-webkit-filter: hue-rotate(180deg);filter: hue-rotate(180deg);}
+.invert {-webkit-filter: invert(100%);filter: invert(100%);}
+.opacity {-webkit-filter: opacity(50%);filter: opacity(50%);}
+.saturate {-webkit-filter: saturate(7); filter: saturate(7);}
+.sepia {-webkit-filter: sepia(100%);filter: sepia(100%);}
+.shadow {-webkit-filter: drop-shadow(8px 8px 10px green);filter: drop-shadow(8px 8px 10px green);}
+</style>
+</head>
+<body>
+
+<p><strong>注意:</strong> Internet Explorer <span lang="no-bok">或 Safari 5.1 (及更早版本)</span> 不支持该属性。</p>
+
+<img src="border.png" alt="Pineapple" width="300" height="300">
+<img class="blur" src="border.png" alt="Pineapple" width="300" height="300">
+<img class="brightness" src="border.png" alt="Pineapple" width="300" height="300">
+<img class="contrast" src="border.png" alt="Pineapple" width="300" height="300">
+<img class="grayscale" src="border.png" alt="Pineapple" width="300" height="300">
+<img class="huerotate" src="border.png" alt="Pineapple" width="300" height="300">
+<img class="invert" src="border.png" alt="Pineapple" width="300" height="300">
+<img class="opacity" src="border.png" alt="Pineapple" width="300" height="300">
+<img class="saturate" src="border.png" alt="Pineapple" width="300" height="300">
+<img class="sepia" src="border.png" alt="Pineapple" width="300" height="300">
+<img class="shadow" src="border.png" alt="Pineapple" width="300" height="300">
+
+</body>
+</html>

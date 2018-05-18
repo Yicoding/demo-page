@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            background: #66c;
+            max-width: 200px;
+        }
+        .item {
+            min-width: 300px;
+            max-width: 200px;
+            background: #66c;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" style="width: 400px!important;">最终max-width会覆盖width成为200px</div>
+    <hr>
+    <div class="item">
+        最终min-width会覆盖max-width成为300px
+    </div>
+</body>
+</html>

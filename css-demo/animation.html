@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animation</title>
+    <style>
+        @keyframes one {
+            0% {width: 200px; height: 200px; background: #6c6;}
+            25% {width: 500px; height: 50px; background: rgb(204, 102, 182); transform: rotate(60deg);position: absolute; left: 100px; top: 200px;}
+            50% {width: 100px; height: 100px; background: rgb(204, 117, 102);}
+            75% {width: 200px; height: 600px; background: rgb(126, 102, 204);}
+            100% {width: 200px; height: 200px; background: rgb(102, 204, 170);}
+        }
+        .one {
+            width: 200px;
+            height: 200px;
+            background: #69c;
+            animation: one 10s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+</body>
+</html>
