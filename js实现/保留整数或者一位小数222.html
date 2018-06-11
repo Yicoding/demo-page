@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>目标：整数，或者保留一位小数</h1>
+    请输入数字：<input type="number" value="" oninput="checkForm(this)"/>
+    <script>
+        function checkForm(e) {
+            console.log(e.value)
+            valArr = e.value.split('.')
+            if (valArr.length>1) {
+                e.value = valArr[0] + '.' + valArr[1].slice(0,1)
+            } else {
+                e.value = valArr[0]
+            }
+        }
+    </script>
+</body>
+</html>

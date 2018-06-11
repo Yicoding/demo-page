@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字轮播</title>
+
+    <style>
+        .msg2{
+            overflow: hidden;
+            white-space: nowrap;
+            width: 300px;
+        }
+        p{
+            padding: 0 15px;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="msg2">
+        <p>根据当前总收益排名&nbsp;<span>前8888名选手</span>正在瓜分<span>5000万元!</span></p>
+    </div>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+    //向左跑马灯
+    function scrollLeft ($obj) {
+        var $child=$obj.children().clone();
+        $obj.append($child);
+        var initLeft=0;
+        var timer=setInterval(function () {
+            initLeft=$obj.scrollLeft();
+            initLeft++;
+            if(initLeft>=$child.width()){
+                initLeft-=$child.width();
+            }
+            $obj.scrollLeft(initLeft);
+        },20);
+    }
+    scrollLeft($('.msg2'))
+    //向上跑马灯
+    function scrollTop($obj) {
+        var $child=$obj.children().clone();
+        $obj.append($child);
+        var initTop=0;
+        var timer=setInterval(function () {
+            initTop=$obj.scrollTop();
+            initTop++;
+            if(initTop>=$child.height()){
+                initTop-=$child.height();
+            }
+            $obj.scrollTop(initTop);
+        },30);
+    }
+</script>
+</body>

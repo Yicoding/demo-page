@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字轮播</title>
+    <script src="js/jquery190.js" language="javascript" type="text/javascript"></script>
+
+    <style>
+        .new_div {
+            width: 500px;
+            height: 20px;
+            position: absolute;
+            left: 50px;
+            top: 100px;
+        }
+
+        .ul_sty {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            padding-left: 0px;
+            margin-top: 0px;
+            border: 1px solid #e0dddd;
+            border-radius: 8px;
+        }
+
+        .li_sty {
+            font-size: 14px;
+            position: absolute;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: red;
+            margin-left: 5px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="new_div">
+    <ul class='ul_sty' id="loopnew">
+        <li class="li_sty">
+            公告1
+        </li>
+        <li class="li_sty">
+            公告2
+        </li>
+        <li class="li_sty">
+            公告3
+        </li>
+    </ul>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+    (function () {
+
+var $ul = $("#loopnew");
+//获得ul长度
+var ulwidth = $("#loopnew").width();
+
+//给li定位 起始位置
+function positionli() {
+    $ul.find("li").each(function () {
+        var index = $(this).index();
+        var left = index * ulwidth + ulwidth;
+
+        $(this).css({left: left});
+    });
+}
+
+
+//轮播
+function lunbo() {
+    $ul.find("li").each(function () {
+
+        var liindex = $(this).index();
+
+        var lastleft = -($ul.find("li").length - liindex) * ulwidth
+
+        $(this).animate({left: lastleft}, 10000, 'linear', function () {
+            positionli();
+            lunbo();
+        });
+
+    });
+}
+positionli();
+lunbo();
+
+})();
+
+</script>
+</body>
