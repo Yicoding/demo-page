@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html xmlns=" http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Canvas绘图</title>
+<script src=" http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+<canvas class="process" width="48px" height="48px">0%</canvas>  
+</body>
+<script>
+$(document).ready(function() {
+//drawProcess();
+i = 0;
+var t = setInterval("addNum()",20);
+});
+function addNum() {
+if(i<100){
+i++;
+$('canvas.process').text(i+"%");
+drawProcess();
+}else{
+t && clearInterval(t);
+}
+}
+
+function drawProcess() {  
+    $('canvas.process').each(function() {
+        var text = $(this).text();
+        var process = text.substring(0, text.length-1);   
+        var canvas = this;  
+        var context = canvas.getContext('2d');  
+        context.clearRect(0, 0, 48, 48);  
+        context.beginPath();  
+        context.moveTo(24, 24);  
+        context.arc(24, 24, 24, 0, Math.PI * 2, false);  
+        context.closePath();  
+        context.fillStyle = '#ddd';  
+        context.fill();  
+        context.beginPath();  
+        context.moveTo(24, 24);    
+        context.arc(24, 24, 24, 0, Math.PI * 2 * process / 100, false);  
+        context.closePath();  
+        context.fillStyle = '#2a2';  
+        context.fill();   
+        context.beginPath();  
+        context.moveTo(24, 24);  
+        context.arc(24, 24, 21, 0, Math.PI * 2, true);  
+        context.closePath();  
+        context.fillStyle = 'rgba(255,255,255,1)';  
+        context.fill();  
+        context.beginPath();  
+        context.arc(24, 24, 18.5, 0, Math.PI * 2, true);  
+        context.closePath();  
+        context.strokeStyle = '#ddd';  
+        context.stroke();  
+        context.font = "bold 9pt Arial";  
+        context.fillStyle = '#2a2';  
+        context.textAlign = 'center';  
+        context.textBaseline = 'middle';  
+        context.moveTo(24, 24);  
+        context.fillText(text, 24, 24);  
+    });
+}
+</script>
+</html>

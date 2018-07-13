@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<link>
+<meta name="page-view-size" content="640*530">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<style>
+ /* .wapper{
+  position:absolute;
+  left:100px;
+  top:100px;
+  box-sizing:border-box;
+ }
+ .text{
+  position:absolute;
+  left:30px;
+  top:40px;
+  font-family:"Microsoft YaHei";
+  font-weight:bold;
+  color:indianred;
+ } */
+ .rect{
+  position:absolute;
+  width:50px;
+  height:100px;
+  overflow:hidden;
+ }
+ .right{
+  left:50px;
+ }
+ .circle{
+  position:absolute;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  box-sizing:border-box;
+  border:5px solid indianred;
+ }
+ .circle_right{
+  left:-50px;
+  clip:rect(0px 50px 100px 0px);
+  animation:roll 5s linear 0s 1 forwards;
+  -webkit-animation:roll 5s linear 0s 1 forwards;
+ }
+ .circle_left{
+  clip:rect(0px 100px 100px 50px);
+  animation:roll 5s linear 5s 1 forwards;
+  -webkit-animation:roll 5s linear 5s 1 forwards;
+ }
+ @keyframes roll{
+  0%{transform:rotate(0deg)}
+  100%{ transform:rotate(180deg)}
+ }
+ @-webkit-keyframes roll{
+  0%{-webkit-transform:rotate(0deg)}
+  100%{ -webkit-transform:rotate(180deg)}
+ }
+</style>
+<body leftmargin="0" topmargin="0">
+<div class="wapper">
+ <div class="rect right"><div class="circle circle_right"></div></div>
+ <div class="rect left"><div class="circle circle_left"></div></div>
+ <!-- <div class="text"><span id="num">1</span><span>%</span></div> -->
+</div>
+</body>
+<script type="text/javascript">
+//  window.onload=function(){
+//   var $num=document.getElementById('num');
+//   (function(){
+//    var i=1,timer;
+//    add();
+//    function add(){
+//     var timer=setTimeout(function(){
+//      add();
+//     },100);
+//     $num.innerHTML=i;
+//     i<100?i++:clearTimeout(timer)
+//    }
+//   })();
+//  }
+</script>
+</html>

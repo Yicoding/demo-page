@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active{
+            background: blue;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul>
+            <li v-for="item in dataArr">
+                <button :class="item.state === 1?'active':''" @click="item.state = 1">{{item.id}}</button>
+            </li>
+        </ul>
+        <a href="javascript:;" @click="resetData">重置</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#main',
+            data: {
+                dataArr: [],
+                listArr: []
+            },
+            created() {
+                this.getData()
+            },
+            methods: {
+                getData() {
+                    let arr = [
+                        {id: 1, state: 0},
+                        {id: 2, state: 0},
+                        {id: 3, state: 0}
+                    ]
+                    setTimeout(() => {
+                        this.dataArr = arr
+                        this.listArr = this.cloneData(arr)
+                    })
+                },
+                resetData() {
+                    console.log(JSON.stringify(this.dataArr), 'dataArr')
+                    console.log(JSON.stringify(this.listArr), 'listArr')
+                    this.dataArr = this.cloneData(this.listArr)
+                },
+                cloneData(arr) {
+                    return arr.map(item => {
+                        let obj = {}
+                        for (var k in item) {
+                            obj[k] = item[k]
+                        }
+                        return obj
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
