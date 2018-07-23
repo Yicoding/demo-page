@@ -1,0 +1,71 @@
+/**
+ * 原子类
+ */
+
+/*常用文字颜色*/
+.ui-txt-black {
+    color: black;
+}
+
+.ui-txt-gray {
+    color: gray;
+}
+
+.ui-txt-lightgray {
+    color: #a6a6a6;
+}
+
+.ui-txt-blue {
+    color: #0079ff;
+}
+
+/**
+ * 1px border hack
+ */
+.ui-border-top {border-top: 1px solid #c8c7cc;}
+.ui-border-btm {border-bottom: 1px solid #c8c7cc}
+.ui-border-tb{
+    border-top:#c8c7cc 1px solid;
+    border-bottom:#c8c7cc 1px solid;
+    background-image:none;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .ui-border-top {border-top: none;}
+    .ui-border-btm {border-bottom: none;}
+
+    /*方法1*/
+    .ui-border-top{
+        background-position: left top; 
+        background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, #c8c7cc), to(#c8c7cc));
+    }
+    .ui-border-btm{
+        background-position: left bottom;
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, #c8c7cc), to(#c8c7cc));
+    }
+    .ui-border-top,
+    .ui-border-btm{
+        background-repeat: repeat-x;
+        background-size: 100% 1px;
+    }
+    .ui-border-tb{
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(.50, transparent), color-stop(.50, #c8c7cc), to(#c8c7cc)) left top repeat-x,-webkit-gradient(linear, left top, left bottom, color-stop(.5, transparent), color-stop(.5, #c8c7cc), to(#c8c7cc)) left bottom repeat-x;
+        border-top:0;
+        border-bottom:0;
+    }
+    .ui-border-tb{
+        background-size: 100% 1px;
+        -wekit-background-size: 100% 1px;
+    }
+}
+/**
+ * 垂直上下居中
+ */
+.ui-center{
+    width: 100%;
+    display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	text-align: center;
+}
