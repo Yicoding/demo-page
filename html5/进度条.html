@@ -9,7 +9,7 @@
 <body>
     <div id="main">
         <canvas id="time-graph-canvas" width="160" height="160"></canvas>
-        <div id="text-second">{{second}}s</div>
+        <div id="text-second" v-text="secondFilter"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script>
@@ -17,6 +17,11 @@
             el: '#main',
             data: {
                 second: 10,
+            },
+            computed: {
+                secondFilter() {
+                    return this.second + 's'
+                }
             },
             mounted() {
                 this.$nextTick(() => {

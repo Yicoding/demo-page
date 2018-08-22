@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/2.png" alt="">
+    <script>
+        function $route(val) {
+            window.jinzhi = 1
+            if (val.name == 'answerPage') {
+                window.jinzhi = 0
+            }
+            document.addEventListener('touchmove', function(e){
+                if (jinzhi == 0) {
+                e.preventDefault()
+                e.stopPropagation()
+                }
+            }, false)
+        }
+    </script>
+</body>
+</html>
