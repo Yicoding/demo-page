@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form表单序列化</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="name">
+        <input type="checkbox" name="hobby"/>
+    </form>
+    <button onclick="commit()">commit</button>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        function commit() {
+            // var form = $('form').serialize()
+            var form = $('form').serializeArray()
+            console.log(form)
+        }
+    </script>
+</body>
+</html>
