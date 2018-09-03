@@ -53,6 +53,22 @@
             return `${year}-${month}-${day} ${hour}:${minute}:${second}`
         }
         console.log(nowDate())
+        // 3.
+        var formatTime = time => {
+            var date = new Date(time)
+            var year = date.getFullYear()
+            var month = date.getMonth() + 1
+            var day = date.getDate()
+            var hour = date.getHours()
+            var minute = date.getMinutes()
+            var second = date.getSeconds()
+            return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+        }
+        var formatNumber = n => {
+            n = n.toString()
+            return n[1] ? n : '0' + n
+        }
+        formatTime('2018-12-06 18:20:03')
     </script>
 </body>
 </html>
