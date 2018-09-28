@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            box-sizing: border-box;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .search{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: #ddd;
+        }
+        .content{
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .bg{
+            height: 1500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container">
+        <div id="search" class="search">
+            <input id="inputForm" type="text">
+        </div>
+        <div id="content" class="content">
+            <div class="bg">
+                start <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                text <br>
+                end
+            </div>
+        </div>
+    </div>
+    <script>
+        var inputForm = document.getElementById('inputForm')
+        // // var search = document.getElementById('search')
+        var content = document.getElementById('content')
+        var container = document.getElementById('container')
+        container.onclick = function() {
+            inputForm.blur()
+        }
+        container.ontouchstart = function() {
+            inputForm.blur()
+        }
+        inputForm.onclick = function(e) {
+            e.stopPropagation()
+        }
+        // inputForm.onfocus = function() {
+        //     // search.addEventListener('touchmove', handler, false)
+        //     // content.style.bottom = 350 + 'px'
+        //     document.getElementById('container').classList.add('fixed')
+        // }
+        // inputForm.onblur = function() {
+        //     // search.removeEventListener('touchmove', handler, false)
+        //     // content.style.bottom = 0
+        //     document.getElementById('container').classList.remove('fixed')
+        // }
+        // function handler(e) {
+        //     e.preventDefault()
+        // }
+    </script>
+</body>
+</html>
