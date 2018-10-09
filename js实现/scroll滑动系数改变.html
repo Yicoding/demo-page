@@ -27,30 +27,45 @@
             border-right: 0;
             border-radius: 5px 0 0 5px;
             color: #fff;
-            transition: all 0.8s;
+            /* transition: all 0.5s; */
             transform: translateY(-50%);
+            top: 200px;
         }
     </style>
 </head>
 <body>
-    <div class="rule-box" id="ruleBox" style="top: 200px;">
+    <div class="rule-box" id="move">
         <div class="art-rule">活动规则</div>
     </div>
-    start <br>
-    hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>
+    modle <br>
     hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>hr <br>
     end
+    <script src="./zepto.min.js"></script>
     <script>
-        window.onload = () => {
-            var top = document.documentElement.scrollTop || document.body.scrollTop
-            var cheight = document.body.clientHeight
-            document.getElementById('ruleBox').style.top = (cheight / 2 + top) + 'px'
-            console.log(cheight / 2)
-            window.addEventListener('scroll', () => {
-               var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-               document.getElementById('ruleBox').style.top = (cheight / 2 + scrollTop) + 'px'
-            })
+        var timer=null;
+        function startMove(element, iTarget) {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                //因为速度要动态改变，所以必须放在定时器中
+                var iSpeed = (iTarget - element.offsetTop) / 8; //(目标值-当前值)/缩放系数=速度
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed); //速度取整
+                if (element.offsetTop === iTarget) {//结束运动
+                    clearInterval(timer);
+                } else {
+                    element.style.top = element.offsetTop + iSpeed + "px";
+                }
+            }, 30);
         }
+
+        var targetY=0;
+        var move=document.getElementById("move");
+        window.onscroll = function(e) {
+            var e = e || window.event;
+            var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+            targetY=scrolltop+160;
+            /*console.log(targetY);*/
+            startMove(move,targetY);
+        };
     </script>
 </body>
 </html>

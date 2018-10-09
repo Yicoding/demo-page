@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .con-box{
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .tip{
+            display: inline-block;
+            min-width: 100%;
+        }
+        .tip p{
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="con-box">
+        <div class="tip">
+            <p>今日可申购可转债：小康转债（783127）时达转债（072527） </p>
+        </div>
+    </div>
+    <script src="./zepto.min.js"></script>
+    <script>
+        scrollLeft($(".con-box"));
+        function scrollLeft($obj) {
+            var $child=$obj.children().clone();
+            $obj.append($child);
+            var initLeft=0;
+            var timer=setInterval(function () {
+                initLeft=$obj.scrollLeft();
+                initLeft++;
+                /*    console.log(initLeft);
+                console.log($child.width());*/
+                if(initLeft>=$child.width()){
+                    initLeft-=$child.width();
+                }
+                $obj.scrollLeft(initLeft);
+            },30);
+        }
+    </script>
+</body>
+</html>

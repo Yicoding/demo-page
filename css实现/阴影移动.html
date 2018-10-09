@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #5c64cf;
+            overflow: hidden;
+        }
+        .freefont{
+            width: 275.5px;
+            height: 62px;
+            background: url(../images/freefont.png);
+            background-size: 100% 100%;
+            margin: 50px auto;
+            position: relative;
+        }
+        .freefont::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 50%,rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: move 2.5s linear infinite;
+        }
+        @-webkit-keyframes move {
+            0% {left: 0;}
+            100% { left: 90%;}
+        }
+        @keyframes move {
+            0% {left: 0;}
+            100% { left: 90%;}
+        }
+    </style>
+</head>
+<body>
+    <div class="freefont"></div>
+</body>
+</html>
