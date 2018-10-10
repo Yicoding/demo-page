@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,viewport-fit=cover">
+	<meta name="format-detection" content="telephone=no, email=no" />
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            background: #3391f4;
+            padding: 100px 0;
+        }
+        .val{
+            color: #fff;
+            padding: 0 0 50px 100px;
+        }
+        input{
+            padding: 0;
+            color: #333;
+            line-height: normal;
+            outline: 0;
+        }
+        .range{
+            display: block;
+            margin: 0 auto;
+            width: 85%;
+            -webkit-appearance: none;
+            border-radius: 10px;
+            background: #85bdf8;
+        }
+        .range::-webkit-slider-runnable-track {
+            height: 5px;
+            border-radius: 10px;
+        }
+        .range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 30px;
+            width: 30px;
+            margin-top: -12px;
+            background: #fff; 
+            border-radius: 50%;
+            border: solid 1.25px rgba(205, 224, 230, 0.5);
+            box-shadow: 0 1.25px 1.25px #3b4547;
+        }
+        .range::focus {
+            outline: none;
+        } 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="val">当前的值为：<span></span></p>
+        <input class="range" id="range" type="range" value="1000" min="100" max="3000" step="100" oninput="change(this)" />
+    </div>
+    <script src="./zepto.min.js"></script>
+    <script>
+        function change(_this) {
+            console.log(_this.value);
+            var val = $(_this).val();
+            var percent = parseInt(val/3000*100);
+            $(_this).css('background','linear-gradient(to right,#fff,#85bdf8 '+percent+'%,#85bdf8)');
+            $('.val>span').html(val)
+        }
+        change(document.getElementById('range'));
+    </script>
+</body>
+</html>
