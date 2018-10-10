@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            background: #66c;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            color: #fff;
+        }
+        .tabs{
+            padding: 0;
+            height: 40px;
+            background: #eee;
+            border-radius: 5px;
+            display: flex;
+            width: 50%;
+            margin: 0 auto;
+        }
+        .tabs li{
+            list-style: none;
+            flex: 1;
+            text-align: center;
+            line-height: 40px;
+        }
+        .container{
+            height: 2000px;
+            background: #c6c;
+            text-align: center;
+        }
+        .tabs-fixed{
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            z-index: 9;
+        }
+        .container-padding{
+           margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">我是header</div>
+    <ul class="tabs">
+        <li>全部</li>
+        <li>最新</li>
+    </ul>
+    <div class="container">container</div>
+    <script src="./zepto.min.js"></script>
+    <script>
+        var $tabHeight =  $('.tabs').offset().top;
+        console.log($tabHeight);
+        $(window).scroll(function() {
+            var $scrollTop = $(window).scrollTop();
+            console.log($scrollTop);
+            if ($scrollTop >= $tabHeight) {
+                $('.tabs').addClass('tabs-fixed');
+                $('.container').addClass('container-padding');
+            } else {
+                $('.tabs').removeClass('tabs-fixed');
+                $('.container').removeClass('container-padding');
+            }
+        });
+    </script>
+</body>
+</html>
