@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mask{
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+            display: none;
+        }
+        .modal{
+            width: 80%;
+            height: 350px;
+            background: #fff;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            display: none;
+        }
+        .container{
+            position: relative;
+        }
+        .close{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #66c;
+            top: 5px;
+            right: 5px;
+        }
+        .slide-fade{
+            animation: confirm-fade 0.5s;
+        }
+        .slide-zoom{
+            animation: confirm-zoom 0.5s;
+        }
+        @keyframes confirm-fade{
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+        }
+        @keyframes confirm-zoom{
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">open</button>
+    <div class="mask"></div>
+    <div class="modal">
+        <div class="container">
+            <div class="close"></div>
+            start <br>
+            in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>
+            in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>
+            in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>
+            in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>
+            in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>
+            in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>in <br>
+            end
+        </div>
+    </div>
+    <script src="./zepto.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btn').click(function() {
+                $('.mask').show().addClass('slide-fade')
+                $('.modal').show().addClass('slide-zoom')
+            })
+            $('.close').click(function() {
+                $('.mask').hide().removeClass('slide-fade')
+                $('.modal').hide().removeClass('slide-zoom')
+            })
+        })
+    </script>
+</body>
+</html>
