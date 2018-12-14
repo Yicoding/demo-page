@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            height: 1000px;
+            background: #66c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">container</div>
+    <script src="./zepto.min.js"></script>
+    <script>
+        // var startVertical,endVertical;
+        //滚动条到页面底部加载更多案例 
+        $(window).scroll(function(){
+            // $(window).on('touchstart', function(e) {
+            //     startVertical = e.targetTouches['0'].pageY;
+            // });
+            // $(window).on('touchend', function(e) {
+            //     endVertical = e.changedTouches['0'].pageY;
+            // });
+            // var levelH = endVertical - startVertical;
+            var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
+            var scrollHeight = $(document).height();   //当前页面的总高度
+            var clientHeight = $(this).height();    //当前可视的页面高度
+            // console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+            if (scrollTop + clientHeight >= scrollHeight) {   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部 
+                //滚动条到达底部
+                alert(3)
+            } else if (scrollTop <= 0) {
+                //滚动条到达顶部
+                alert(4)
+                //滚动条距离顶部的高度小于等于0 TODO
+            
+            }
+        });
+    </script>
+</body>
+</html>

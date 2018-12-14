@@ -1,0 +1,172 @@
+.zhuanguzhiyin{
+    .container{
+        padding: 0 2.3rem;
+        .content{
+            color: #fff;
+            font-size: 1.7rem;
+            font-weight: bold;
+            line-height: 2.8rem;
+            text-align: justify;
+            padding: 2.8rem 1.8rem;
+            background: inline-image("../../resource/img/content-1.png");
+            background-size: 100% 100%;
+            margin-bottom: 3.8rem;
+        }
+        .title-blue{
+            color: #00fcff;
+            font-size: 2.1rem;
+            font-weight: bold;
+            margin-top: 2.8rem;
+        }
+        .line{
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            p{
+                text-align: justify;
+                padding-left: 3.2rem;
+                &:first-of-type{
+                    font-weight: bold;
+                    color: #eac272;
+                    position: relative;
+                    &:before{
+                        display: inline-block;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        border-radius: 50%;
+                        color: #020e43;
+                        background-color: #eac272;
+                        text-align: center;
+                        line-height: 1.5rem;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                        -webkit-transform: translateY(-50%);
+                    }
+                }
+                &:last-of-type{
+                    line-height: 2.7rem;
+                    color: #fff;
+                    margin-top: 0.6rem;
+                }
+            }
+            &:first-of-type{
+                p{
+                    &:first-of-type{
+                        &:before{
+                            content: '1';
+                        }
+                    }
+                    &:last-of-type{
+                        text-indent: -8px;
+                    }
+                }
+            }
+            &:nth-of-type(2){
+                p{
+                    &:first-of-type{
+                        &:before{
+                            content: '2';
+                        }
+                    }
+                }
+            }
+            &:nth-of-type(3){
+                p{
+                    &:first-of-type{
+                        &:before{
+                            content: '3';
+                        }
+                    }
+                }
+            }
+        }
+        .line-simple{
+            color: #fff;
+            font-size: 1.5rem;
+            line-height: 2.4rem;
+            margin-top: 3rem;
+            padding-left: 3.2rem;
+            position: relative;
+            &:before{
+                display: inline-block;
+                width: 1.5rem;
+                height: 1.5rem;
+                border-radius: 50%;
+                color: #020e43;
+                background-color: #eac272;
+                text-align: center;
+                line-height: 1.5rem;
+                position: absolute;
+                top: 0.3rem;
+                left: 0;
+            }
+            &.line-one{
+                &:before{
+                    content: '1';
+                }
+            }
+            &.line-two{
+                &:before{
+                    content: '2';
+                }
+            }
+        }
+        .zhuangu-1{
+            width: 100%;
+            display: block;
+            margin: 2.8rem auto 3.5rem;
+        }
+        .zhuangu-2{
+            width: 46%;
+            display: block;
+            margin: 2.8rem auto 3.5rem;
+        }
+        .zhuangu-3{
+            width: 100%;
+            display: block;
+            margin: 2.6rem auto 3rem;
+        }
+        .zhuangu-4{
+            width: 46%;
+            display: block;
+            margin: 2.6rem auto 2.6rem;
+        }
+        .zhuangu-5{
+            width: 46%;
+            display: block;
+            margin: 3.6rem auto 6rem;
+        }
+        .info-small{
+            line-height: 2.4rem;
+        }
+        .info-yellow{
+            color: #eac272;
+            line-height: 2.4rem;
+        }
+        .tip{
+            padding: 2rem 0 1.8rem;
+            margin-bottom: 5.5rem;
+            position: relative;
+            &:after{
+                content: '';
+                width: 200%;
+                height: 200%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                box-sizing: border-box;
+                border-bottom: 1px dashed #fff;
+                transform: scale(0.5,0.5);
+                -webkit-transform: scale(0.5,0.5);
+                transform-origin: top left;
+                -webkit-transform-origin: top left;
+            }
+            p{
+                color: #fff;
+                font-size: 1.2rem;
+                line-height: 2.7rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的奖励</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<link href="../resource/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="reward">
+        <ul class="fun">
+            <li>
+                <i></i>
+                <p>邀请好友：<span>0</span></p>
+                <a class="btn-active" href="javascript:;">发起邀请</a>
+            </li>
+            <li>
+                <i></i>
+                <p>剩余抽奖次数：<span>0</span></p>
+                <a class="btn-active" href="javascript:;">去试试手气</a>
+            </li>
+        </ul>
+        <ul class="list">
+            <li>
+                <div>
+                    <p>
+                        <i>360</i><span>天</span>美股免佣
+                    </p>
+                    <p>0佣金交易全球优质上市公司</p>
+                </div>
+                <a class="btn-active btn-meigu" href="javascript:;">立即领取</a>
+            </li>
+            <li>
+                <div>
+                    <p>
+                        <i>6</i><span>股</span>腾讯音乐
+                    </p>
+                    <p>免费送股，收益不打折</p>
+                </div>
+                <a class="btn-active btn-gray btn-music" href="javascript:;">已领取</a>
+            </li>
+        </ul>
+        <a href="javascript:;" class="link">首次转股，免费领腾讯音乐>>></a>
+    </div>
+    <div class="modal-mask"></div>
+    <div class="modal-container">
+        <div class="modal-content">
+            <div class="modal-title">温馨提示</div>
+            <div class="modal-img">
+                <i class="icon-meigu"></i>
+                <i class="icon-music"></i>
+            </div>
+            <i></i>
+            <p class="modal-info">恭喜您成功领取<span>6</span>股腾讯音乐</p>
+            <p class="modal-tip">注：将在七个工作日内为您发放</p>
+        </div>
+        <div class="modal-close"></div>
+    </div>
+    <script src="../resource/js/zepto.min.js"></script>
+    <script>
+        //定义一个方法并执行
+        (function(doc, win) {
+            var docEl = doc.documentElement;
+            resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
+            var recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if(!clientWidth) return;
+                docEl.style.fontSize = 10 * ((clientWidth >= 750 ? 750 : clientWidth) / 375) + 'px';
+            };
+            if(!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+        $(document).ready(function() {
+            $('.modal-close').click(function() {
+                $('.modal-mask').hide().removeClass('mask-ani');
+                $('.modal-container').hide().removeClass('container-ani');
+            });
+            $('.btn-meigu').click(function() {
+                $('.modal-mask').show();
+                $('.modal-container').show().addClass('container-ani');
+                $('.icon-music').hide();
+                $('.icon-meigu').css('display', 'block');
+            });
+            $('.btn-music').click(function() {
+                $('.modal-mask').show();
+                $('.modal-container').show().addClass('container-ani');
+                $('.icon-meigu').hide();
+                $('.icon-music').css('display', 'block');
+            });
+            $('.modal-mask').on('touchstart', function(e) {
+                e.preventDefault()
+            })
+        });
+    </script>
+</body>
+</html>

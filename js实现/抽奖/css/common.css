@@ -1,0 +1,85 @@
+
+/*公共样式*/
+body{
+    background-color: #F7F7F7;
+    margin: 0;
+    padding: 0;
+}
+
+.banxin {
+    width: 6.9rem;
+    margin: 0 auto;
+}
+.header {
+    background: rgb(68, 181, 73);
+    height: 1rem;
+    width: 100%;
+    color: #F7F7F7;
+    font-size: 0.34rem;
+    line-height: 1rem;
+}
+.header a {
+    display: inline-block;
+    width: 0.2rem;
+    height: 0.34rem;
+    line-height: 0.34rem;
+    margin-bottom: -0.03rem;
+    margin-right: 0.25rem;
+    background: url("../img/sprite.png") no-repeat -3.38rem 0;
+    background-size: 3.98rem 1.16rem;
+}
+.header span {
+    line-height: 0.34rem;
+}
+.w{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+*{
+    box-sizing: border-box;
+}
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {
+    margin:0;
+    font-family: "Microsoft Yahei";
+    padding:0;
+    /*border:0;
+    */
+    /*outline:0;
+	*/
+    /*font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+	*/
+}
+h1,h2,h3,h4,h5,h6,em,i {
+    font-weight:100;
+    font-style:normal;
+}
+ul,ol,li {
+    list-style-type:none;
+}
+a {
+    color:#666;
+    text-decoration:none;
+    outline:0;
+}
+a:hover {
+    text-decoration:none;
+}
+.clearfix:after,.clearfix:before{
+    content: "";
+    display: table;
+}
+.clearfix:after{
+    clear: both;
+}
+.clearfix{
+    zoom: 1;/*兼容ie6,7,8*/
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>富途转入</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<link href="../resource/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="futuzhuanru">
+        <div class="bg-element">
+            <p>如何从富途转入股票</p>
+        </div>
+        <div class="container">
+            <p class="title">1.东方财富APP提交转入信息</p> 
+            <p class="info">登录东方财富APP点击【转入股票】，提交转入信息，包括转出券商，原券商账户号码以及个股信息并提交。</p>
+            <img class="photo-1" src="../resource/img/photo-1.png" alt="">
+            <p class="title">2.获取东财国际证券股票交收指示表格</p> 
+            <p class="info">在东财APP提交股票转入信息后，后台自动生成交收指示表格，可联系东财国际证券获取表格，通过拍照或者扫描形式以提交给富途证券。</p>
+            <img class="photo-2" src="../resource/img/photo-2.png" alt="">
+            <p class="title">3.登录富途APP或官网提交转出信息</p> 
+            <p class="info">登录富途证券APP或者官网，点击【交易】，找到【转出股票】，选择转出股票为港股还是美股，接收券商选择【其他证券公司】后点击按钮进入下一步。</p>
+            <img class="photo-3" src="../resource/img/photo-3.png" alt="">
+            <p class="title">4.提交转仓表格</p> 
+            <p class="info">填写富途证券交易密码后上传第二步获取的表格，完成并发送通知。</p>
+            <img class="photo-4" src="../resource/img/photo-4.png" alt="">
+        </div>
+        <div class="footer">
+            <p class="phone">24小时客服热线：<a href="tel:400-920-1822">400-920-1822</a></p>
+            <p class="desc">东方财富国际证券为上市公司东方财富（sz,300059）成员企业是香港证监会认可的持牌法团（中央编号：ATR761）</p>
+        </div>
+    </div>
+    <script>
+        //定义一个方法并执行
+        (function(doc, win) {
+            var docEl = doc.documentElement;
+            resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
+            var recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if(!clientWidth) return;
+                docEl.style.fontSize = 10 * ((clientWidth >= 750 ? 750 : clientWidth) / 375) + 'px';
+            };
+            if(!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</body>
+</html>
