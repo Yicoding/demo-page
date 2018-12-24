@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            font-size: 0;
+        }
+        .container img{
+            display: inline-block;
+            width: 33.333%;
+            height: 90px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="preveImg()">
+        <img src="../images/img1.png" />
+        <img src="../images/img2.png" />
+        <img src="../images/img3.png" />
+    </div>
+    <script src="./previewImage.js"></script>
+    <script>
+        function preveImg() {
+            var obj = { urls: ['../images/img1.png', '../images/img2.png', '../images/img3.png'], current: 1 };
+            window.previewImage.start(obj)
+        }
+    </script>
+</body>
+</html>
