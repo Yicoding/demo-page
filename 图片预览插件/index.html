@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html {
+      height: 100%;
+      font-size: 62.5%;
+    }
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: gray;
+    }
+    .post-pic-list {
+      font-size: 0;
+    }
+    .post-pic {
+      display: inline-block;
+      width: 33.33%;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="post-pic-list">
+    <img src="./img/1.png" class="post-pic" />
+    <img src="./img/2.png" class="post-pic" />
+    <img src="./img/3.png" class="post-pic" />
+  </div>
+  <script src="./zepto.min.js"></script>
+  <script src="./previewImage.js"></script>
+  <script src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/2.5.1/vconsole.min.js"></script>
+  <script>
+    $(".post-pic-list img").click(function() {
+      var index = $(this).index()
+			var obj = { urls: [], current: null };
+			$(this).parent().find("img").each(function(index2) {
+        obj.urls.push({
+          src: this.src,
+					text: '我是文字我是文字我是文字我是文字我是文字我'+(index2+1)
+				})
+			})
+			obj.current = obj.urls[index]
+			previewImage.start(obj);
+		})
+  </script>
+</body>
+
+</html>
