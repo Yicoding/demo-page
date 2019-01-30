@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>联动表格</title>
+  <style>
+    html,body,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+    li{
+      list-style: none;
+    }
+    html{
+      height: 100%;
+      font-size: 62.5%;
+    }
+    body{
+      color: #333;
+      background: #fff;
+      height: 100%;
+      font-size: 1.4rem;
+    }
+    .fund{
+      padding-top: 7.5rem;
+    }
+    .fixed-header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: #fff;
+    }
+    .header{
+      position: relative;
+    }
+    .header::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 4.5rem;
+      box-shadow: 0px 0 10px 10px #fff;
+      z-index: 10;
+    }
+    .tabs{
+      font-size: 0;
+      padding-right: 1rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tabs::-webkit-scrollbar{
+      display: none;
+    }
+    .tabs>li{
+      display: inline-block;
+      width: 18%;
+      height: 4rem;
+      line-height: 4rem;
+      font-size: 1.5rem;
+      color: #646464;
+      text-align: center;
+    }
+    .tabs>li.active{
+      color: #3074c2;
+      position: relative;
+    }
+    .tabs>li.active::after{
+      content: '';
+      position: absolute;
+      bottom: 0.2rem;
+      left: 50%;
+      width: 2rem;
+      height: 0.3rem;
+      border-radius: 0.15rem;
+      background: #3074c2;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+    }
+    .thead{
+      background: #f7f8fa;
+      position: relative;
+    }
+    .thead>ul>li{
+      font-size: 1.2rem;
+    }
+    .thead-l>li{
+      height: 3.5rem;
+      line-height: 3.5rem;
+      width: 25%;
+      text-align: center;
+    }
+    .thead-r{
+      position: absolute;
+      top: 0;
+      left: 25%;
+      right: 1.5rem;
+      bottom: 0;
+      z-index: 9;
+      overflow-x: auto;
+      white-space: nowrap;
+      font-size: 0;
+    }
+    .thead-r::-webkit-scrollbar{
+      display: none;
+    }
+    .thead-r>li{
+      display: inline-block;
+      width: 30%;
+      text-align: center;
+      font-size: 1.3rem;
+      color: #666;
+      height: 3.5rem;
+      line-height: 3.5rem;
+    }
+    .thead-r>li>i{
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      vertical-align: middle;
+      position: relative;
+      bottom: 0.2rem;
+      margin-left: 0.1rem;
+      background-size: 100% 100%;
+      visibility: hidden;
+    }
+    .thead-r>li>i.order-up{
+      background-image: url(../img/order-up.png);
+      visibility: visible;
+    }
+    .thead-r>li>i.order-down{
+      background-image: url(../img/order-down.png);
+      visibility: visible;
+    }
+    .container{
+      position: relative;
+    }
+    .line{
+      padding: 0.5rem 0 0.5rem 1.7rem;
+      width: 25%;
+      box-sizing: border-box;
+    }
+    .fixed-box{
+      position: absolute;
+      top: 0;
+      left: 25%;
+      right: 1.5rem;
+      bottom: 0;
+      z-index: 9;
+      overflow-x: auto;
+    }
+    .fixed-box::-webkit-scrollbar{
+      display: none;
+    }
+    .fixed-box>ul{
+      white-space: nowrap;
+      font-size: 0;
+    }
+    .fixed-box>ul>li{
+      display: inline-block;
+      width: 30%;
+      text-align: center;
+      font-size: 1.3rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="fund">
+    <div class="fixed-header">
+      <div class="header">
+        <ul class="tabs">
+          <li class="active">全部</li>
+          <li>股票</li>
+          <li>债券</li>
+          <li>混合</li>
+          <li>货币</li>
+          <li>QDII</li>
+          <li>短期理财</li>
+        </ul>
+      </div>
+      <div class="thead">
+        <ul class="thead-l">
+          <li>名称/代码</li>
+        </ul>
+        <ul class="thead-r">
+          <li>质押比例<i class="order-down"></i></li>
+          <li>质押市值<i></i></li>
+          <li>质押股数<i></i></li>
+          <li>质押笔数<i></i></li>
+          <li>涨幅<i></i></li>
+          <li>押数<i></i></li>
+          <li>所属行业<i></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="fixed-box">
+      </div>
+    </div>
+  </div>
+  <script src="../zepto.min.js"></script>
+  <script>
+    // 头部切换
+    $('.tabs').on('click', 'li', function() {
+      $(this).addClass('active').siblings().removeClass('active');
+    });
+    // 排序
+    $('.thead-r').on('click', 'li', function() {
+      var child = $(this).children('i');
+      console.log(child);
+      if (child.hasClass('order-down')) {
+        child.addClass('order-up').removeClass('order-down');
+      } else {
+        child.addClass('order-down');
+      }
+      $(this).siblings().children('i').removeClass('order-down').removeClass('order-up');
+    });
+    // 添加DOM
+    var container = document.querySelector('.container')
+    var box = document.querySelector('.fixed-box')
+    for (var i = 0; i < 20; i ++) {
+      var $ul = document.createElement('ul');
+      $ul.setAttribute('class', 'line');
+      $ul.innerHTML = `<li>藏格控股${i+1}</li><li>000408</li>`
+      container.insertBefore($ul, box)
+      var $fixLine = document.createElement('ul');
+      $fixLine.setAttribute('class', 'fixed-line');
+      $fixLine.innerHTML = `<li>77.96%</li>
+        <li>168.33亿</li>
+        <li>15.54亿</li>
+        <li>32</li>
+        <li>1.75%</li>
+        <li>392万</li>
+        <li>化学原料</li>`
+      box.appendChild($fixLine)
+    }
+    // 计算行高
+    var arrLeft = []
+    var leftUl = document.getElementsByClassName('line')
+    for (var i = 0; i < leftUl.length; i ++) {
+      arrLeft.push(getComputedStyle(leftUl[i]).height)
+    }
+    var rightUl = document.getElementsByClassName('fixed-line')
+    for (var i = 0; i < rightUl.length; i ++) {
+      rightUl[i].style.height = arrLeft[i]
+      rightUl[i].style.lineHeight = arrLeft[i]
+    }
+    // 上下左右联动
+    var $thead = document.querySelector('.thead-r'),
+    $tbody = document.querySelector('.fixed-box');
+    $tbody.addEventListener('scroll', function() {
+      $thead.scrollLeft = this.scrollLeft
+    });
+    $thead.addEventListener('touchmove', function(e) {
+      e.preventDefault()
+    })
+  </script>
+</body>
+</html>
