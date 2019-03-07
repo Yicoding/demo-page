@@ -9,10 +9,11 @@
 <body>
     <h3>1.基本操作：</h3>
     <p>添加更改文件 --> 本地提交 --> 推送远端</p>
-    <p>git add *</p>
+    <p>git add .</p>
     <p>git commit -m 'commit info'</p>
-    <p>git fetch</p>
-    <p>git merge 'branchname'</p>
+    <!-- <p>git fetch</p>
+    <p>git merge 'branchname'</p> -->
+    <p>git pull origin 'branchname'</p>
     <p>git push origin 'branchname'</p>
     
     <h3>2.新建分支：</h3>
@@ -34,5 +35,8 @@
     <p>删除本地分支：git branch -d new</p>
     <p>删除本地远程分支：git branch -r -d orgin/new</p>
     <p>远程删除git服务器上的分支：git push origin -d new</p>
+
+    <h3>6.版本回退</h3>
+    <p>git reset --hard '版本号'</p>
 </body>
 </html>
