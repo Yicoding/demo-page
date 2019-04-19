@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .parent{
+
+    }
+    .child{
+      height: 30px;
+      margin-top: 5px;
+      line-height: 30px;
+      color: red;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <ul class="parent">
+    <li class="child">1</li>
+    <li class="child">2</li>
+    <li class="child">3</li>
+    <li class="child">4</li>
+    <li class="child">5</li>
+    <li class="child">6</li>
+    <li class="child">7</li>
+    <li class="child">8</li>
+    <li class="child">9</li>
+    <li class="child">10</li>
+  </ul>
+  <script>
+    var ul = document.querySelector('ul')
+    ul.addEventListener('click', function(e) {
+      e = e ||window.event
+      let target = e.target || e.srcElement
+      // console.log(target.nodeName)
+      if (target.nodeName.toLowerCase() == 'li') {
+        let li = document.querySelectorAll('li')
+        let index = Array.prototype.indexOf.call(li, target)
+        console.log(index)
+      }
+    })
+  </script>
+</body>
+</html>
