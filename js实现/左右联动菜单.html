@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head></head>
+    <style>
+        /*菜单容器样式,设置水平垂直居中,方便点击*/
+        .menu{position: fixed;width: 200px;height: 200px;top: 50%;left: 50%;transform: translate(-50%,-50%);}
+        /*菜单样式*/
+        [href]{display: inline-block;width: 40px;}
+        /*内容的样式*/
+        [name]{display: block;width: 300px;height: 400px;border-top: 5px solid salmon;}
+        /*菜单高亮的样式*/
+        .active{font-size: 32px;background-color: chartreuse;}
+    </style>
+    <body>
+        <!--内容容器-->
+        <div class="content"></div>
+        <!--菜单容器-->
+        <div class="menu"></div>        
+    </body></html><script>
+//初始化选择器,将获取到的element数组转化为数组对象
+function $(selector){
+    return Array.prototype.slice.call(document.querySelectorAll(selector))//支持css3的选择器
+}
+//创建内容和菜单的DOM
+function createDom(attr){
+    var html = '';
+    var temp = attr=='href'?'#':'';
+    for (var i=1;i<10;i++) {
+        html+='<a '+attr+'="'+(temp+i)+'">'+i+'</a>';
+    }
+    return html;
+}
+$('.content')[0].innerHTML = createDom('name')
+$('.menu')[0].innerHTML = createDom('href')
+
+//获取内容的偏移量(相对于浏览器顶部)
+var nameOffsets = $('[name]').map(function(v){
+    return v.offsetTop
+});
+
+window.onscroll = function(e){
+    //获取当前页面相对于浏览器顶部的偏移量
+    var pageOffset = window.pageYOffset;
+    var abs = Math.abs; //获取绝对值函数
+    //查找离当前浏览器顶部的偏移量最近的菜单锚点.
+    var nearHash =  nameOffsets.reduce(function(a,b){
+        return abs(a-pageOffset)>abs(b-pageOffset)?b:a;
+    })
+    //获取菜单锚点
+    var index = nameOffsets.indexOf(nearHash);
+    //给菜单锚点添加 .active ,移除其他菜单元素的.active
+    $('.active').forEach(function(v){
+        v.className=''  
+    })
+    $('[href]')[index].className = 'active'
+}
+</script>
