@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background: #181717;
+    }
+
+    #canvas {
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="250" height="170">
+    <p>抱歉，您的浏览器不支持canvas</p>
+  </canvas>
+  <script>
+
+    var point = 30;
+    toCanvas('canvas', point / 200 * 100, point, './avatar.png');
+    setTimeout(() => {
+      point = 100;
+      toCanvas('canvas', point / 200 * 100, point, './avatar.png', 30/200*100);
+      setTimeout(() => {
+        point = 175;
+        toCanvas('canvas', point / 200 * 100, point, './avatar.png', 100/200*100);
+      }, 3000);
+    }, 3000);
+
+    /**
+ *  生成环形进度条
+ */
+function toCanvas(id, progress, point, url, rate = 0.0) {
+  // canvas进度条
+  const canvas = document.getElementById(id);
+  const ctx = canvas.getContext("2d");
+  canvas.width = 250;
+  canvas.height = 170;
+  const percent = progress; // 最终百分比
+  const circleX = canvas.width / 2; // 中心x坐标
+  const circleY = canvas.height / 2; // 中心y坐标
+  const radius = 80; // 圆环半径
+  const lineWidth = 8; // 圆形线条的宽度
+  let circleLoading = null; //
+  let process = rate;
+  /**
+   * 解决canvas模糊的问题
+   */
+  // 放大
+  function getPixelRatio() {
+    const backingStore =
+      ctx.backingStorePixelRatio ||
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
+    return (window.devicePixelRatio || 1) / backingStore;
+  }
+  const ratio = getPixelRatio(ctx);
+  canvas.style.width = `${canvas.width}px`;
+  canvas.style.height = `${canvas.height}px`;
+  canvas.width *= ratio;
+  canvas.height *= ratio;
+  // 放大倍数
+  ctx.scale(ratio, ratio);
+  /** */
+
+  // 画圆
+  function circle(cx, cy, r) {
+    ctx.beginPath();
+    // ctx.moveTo(cx + r, cy);
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = "#342F28";
+    ctx.arc(cx, cy + 20, r, (Math.PI * 4) / 5, (Math.PI * 1) / 5);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.lineWidth = lineWidth - 2;
+    ctx.strokeStyle = "#282828";
+    ctx.lineCap = "round";
+    ctx.arc(cx, cy + 20, r, (Math.PI * 4) / 5, (Math.PI * 1) / 5);
+    ctx.stroke();
+  }
+
+  // 画弧线
+  function sector(cx, cy, r, startAngle, endAngle) {
+    ctx.beginPath();
+    // ctx.moveTo(cx, cy + r); // 从圆形底部开始画
+    ctx.lineWidth = lineWidth;
+
+    // 渐变色 - 可自定义
+    // let linGrad = ctx.createLinearGradient(
+    //   circleX-radius-lineWidth, circleY, circleX+radius+lineWidth, circleY
+    // );
+    // linGrad.addColorStop(0.0, '#D39D4D');
+    // linGrad.addColorStop(0.35, '#E1B473');
+    // linGrad.addColorStop(1.0, '#EEC995');
+    // ctx.strokeStyle = linGrad;
+    // 进度条颜色
+    const circleL = circleX - radius;
+    const circleR = circleX + radius;
+    const grd = ctx.createLinearGradient(
+      circleL - 5,
+      circleY + 90,
+      circleR + 5,
+      circleY + 90
+    );
+    grd.addColorStop(0, "#D39D4D");
+    grd.addColorStop(0.5, "#E1B473");
+    grd.addColorStop(1, "#EEC995");
+    ctx.strokeStyle = grd;
+    // 圆弧两端的样式
+    ctx.lineCap = "round";
+
+    // 圆弧
+    ctx.arc(
+      cx,
+      cy + 20,
+      r,
+      (Math.PI * 4) / 5,
+      (Math.PI * 4) / 5 + (endAngle / 100) * ((Math.PI * 7) / 5),
+      false
+    );
+    ctx.stroke();
+  }
+
+  // 绘制文本
+  function fillTxt() {
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    // 中间的字
+    ctx.font = "bold 20px PingFangSC-Regular";
+    ctx.fillStyle = "#FFE7B5";
+    ctx.fillText(point, circleX, circleY + 35);
+    // 本月成长值
+    ctx.font = "12px PingFangSC-Regular";
+    ctx.fillStyle = "#FFE8BA";
+    ctx.fillText("本月成长值", circleX, circleY + 55);
+
+    // 刻度
+    ctx.font = "12px PingFangSC-Regular";
+    ctx.fillStyle = "rgba(161, 138, 89, .5)";
+
+    const rad = (2 * Math.PI) / 40;
+    const txtlist = [
+      {
+        val: 0,
+        x: Math.cos(rad * 16) * (radius + 25),
+        y: Math.sin(rad * 16) * (radius + 18)
+      },
+      {
+        val: 25,
+        x: Math.cos(rad * 19) * (radius + 20),
+        y: Math.sin(rad * 19) * (radius + 18)
+      },
+      {
+        val: 50,
+        x: Math.cos(rad * 22) * (radius + 18),
+        y: Math.sin(rad * 22) * (radius + 18)
+      },
+      {
+        val: 75,
+        x: Math.cos(rad * 25) * (radius + 12),
+        y: Math.sin(rad * 25) * (radius + 15)
+      },
+      {
+        val: 100,
+        x: Math.cos(rad * 30) * (radius + 10),
+        y: Math.sin(rad * 30) * (radius + 10)
+      },
+      {
+        val: 125,
+        x: Math.cos(rad * 35) * (radius + 12),
+        y: Math.sin(rad * 35) * (radius + 15)
+      },
+      {
+        val: 150,
+        x: Math.cos(rad * 38) * (radius + 18),
+        y: Math.sin(rad * 38) * (radius + 18)
+      },
+      {
+        val: 175,
+        x: Math.cos(rad * 41) * (radius + 23),
+        y: Math.sin(rad * 41) * (radius + 18)
+      },
+      {
+        val: "190+",
+        x: Math.cos(rad * 44) * (radius + 33),
+        y: Math.sin(rad * 44) * (radius + 18)
+      }
+    ];
+    txtlist.forEach(item => {
+      const { val, x, y } = item;
+      ctx.fillText(val, x + circleX, y + circleY + 10);
+    });
+  }
+
+  // 画头像
+  const img = new Image();
+  img.src = url;
+  function fillAvatar() {
+    const avatarurlWidth = 40;
+    const avatarurlHeigth = 40;
+    const avatarurlX = circleX - 20;
+    const avatarurlY = circleY - 25;
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(
+      avatarurlWidth / 2 + avatarurlX,
+      avatarurlHeigth / 2 + avatarurlY,
+      avatarurlWidth / 2,
+      0,
+      Math.PI * 2,
+      false
+    );
+    ctx.clip();
+    ctx.drawImage(img, avatarurlX, avatarurlY, avatarurlWidth, avatarurlHeigth);
+    ctx.restore();
+  }
+
+  // 画刻度
+  function fillLine() {
+    for (let i = 0; i < 40; i += 1) {
+      // 40等分
+      const rad = ((2 * Math.PI) / 40) * i;
+      const lineA = {
+        x: Math.cos(rad) * (radius - 12),
+        y: Math.sin(rad) * (radius - 12)
+      };
+      const lineB = {
+        x: Math.cos(rad) * (radius - 18),
+        y: Math.sin(rad) * (radius - 18)
+      };
+
+      const grith = 2 * Math.PI; // 周长
+
+      if (
+        (rad >= 0 && rad <= (grith / 40) * 4) ||
+        (rad >= (grith / 40) * 16 && rad <= (grith / 40) * 40)
+      ) {
+        // 0～4 16～40
+        ctx.beginPath();
+        ctx.moveTo(lineA.x + circleX, lineA.y + circleY + 20); // 设置起点状态
+        ctx.lineTo(lineB.x + circleX, lineB.y + circleY + 20); // 设置末端状态
+        ctx.lineWidth = 1; // 设置线宽状态
+        if (rad >= (grith / 40) * 16 && rad <= grith) {
+          // 16～40
+          if (
+            rad <= (Math.PI * 4) / 5 + (process / 100) * ((Math.PI * 7) / 5) &&
+            process
+          ) {
+            ctx.strokeStyle = "#6B522D";
+          } else {
+            ctx.strokeStyle = "#282828";
+          }
+        } else if (rad >= 0 && rad <= (grith / 40) * 7) {
+          // 0～7
+          if (
+            (Math.PI * 4) / 5 + (process / 100) * ((Math.PI * 7) / 5) - grith >=
+              0 &&
+            rad <=
+              (Math.PI * 4) / 5 +
+                (process / 100) * ((Math.PI * 7) / 5) -
+                grith +
+                (grith / 40) * 0.5
+          ) {
+            ctx.strokeStyle = "#6B522D";
+          } else {
+            ctx.strokeStyle = "#282828";
+          }
+        }
+        ctx.stroke(); // 进行绘制
+      }
+    }
+  }
+
+  // 刷新
+  function loading() {
+    if (process >= percent) {
+      clearInterval(circleLoading);
+    }
+
+    // 清除canvas内容
+    ctx.clearRect(0, 0, circleX * 2, circleY * 2);
+
+    // 绘制文本
+    fillTxt();
+
+    // 圆形
+    circle(circleX, circleY, radius);
+
+    // 画刻度
+    fillLine();
+
+    // 画头像
+    fillAvatar();
+
+    // 圆弧
+    if (process) {
+      sector(circleX, circleY, radius, (Math.PI * 2) / 3, process);
+    }
+    // 控制结束时动画的速度
+    if (process / percent > 0.9) {
+      process += 0.3;
+    } else if (process / percent > 0.8) {
+      process += 0.55;
+    } else if (process / percent > 0.7) {
+      process += 0.75;
+    } else {
+      process += 1.0;
+    }
+  }
+  // let process = 0.0; //进度
+  circleLoading = window.setInterval(function() {
+    loading();
+  }, 20);
+}
+  </script>
+</body>
+
+</html>
