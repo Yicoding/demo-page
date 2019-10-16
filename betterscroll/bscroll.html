@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body, .box{
+      height: 100%;
+    }
+    .parent{
+      white-space: nowrap;
+      overflow: hidden;
+      /* height: 100px;
+      line-height: 100px;
+      width: 100%; */
+    }
+    .child, span{
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="wrapper">
+      <p>1</p>
+      <div class="parent">
+        <div class="child">
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>3</span>
+          <span>1</span>
+        </div>
+      </div>
+      <p>2</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+        console.log('Hello world');
+    </script> 
+  <script src="https://unpkg.com/better-scroll/dist/bscroll.min.js"></script>
+  <script>
+    let scroll = new BScroll('.box', {
+      probeType: 3,
+      scrollY: true,
+      click: true,
+      tap: 'tap'
+    })
+    function onScroll(pos) {
+      console.log(`Now position is y: ${pos.y}`)
+    }
+    scroll.on('scroll', onScroll);
+
+    let scrollUl = new BScroll('.parent', {
+      probeType: 3,
+      scrollX: true,
+      click: true,
+      tap: 'tap',
+      stopPropagation: true,
+    })
+    scrollUl.on('scroll', (pos) => {
+      console.log(`Now position is x: ${pos.x}, y: ${pos.y}`)
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box{
+      white-space: nowrap;
+    }
+    .wrapper{
+      display: inline-block;
+    }
+    p{
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="wrapper">
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>3</p>
+      <p>1</p>
+    </div>
+  </div>
+  <script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+        console.log('Hello world');
+    </script> 
+  <script src="https://unpkg.com/better-scroll/dist/bscroll.min.js"></script>
+  <script>
+    let scroll = new BScroll('.box', {
+      probeType: 3,
+      scrollX: true,
+      scrollY: false,
+      click: true,
+      tap: 'tap'
+    })
+    function onScroll(pos) {
+        console.log(`Now position is y: ${pos.y}`)
+    }
+    scroll.on('scroll', onScroll);
+  </script>
+</body>
+</html>
