@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var str = "\u7434\u5fc3\u5251\u9b44\u4eca\u4f55\u5728\uff0c\u6c38\u591c\u521d\u6657\u51dd\u78a7\u5929\u3002";
+    document.write(unescape(str.replace(/\\u/g, '%u'))); //琴心剑魄今何在，永夜初晗凝碧天。
+  </script>
+</body>
+
+</html>
