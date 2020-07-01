@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 使用fetch
+    fetch(requestUrl, newOptions)
+      .then(checkStatus)
+      // .then(response => cachedSave(response, hashcode))
+      .then(response => {
+        // DELETE and 204 do not return data by default
+        // using .json will report an error.
+        if (newOptions.method === 'DELETE' || response.status === 204) {
+          return response.text();
+        }
+        if (newOptions.fileName) {
+          // 判断是否为文件流
+          return response.blob().then(blob => {
+            console.log('blob', blob);
+            if ('msSaveOrOpenBlob' in navigator) {
+              // 兼容ie
+              const newBlob = new Blob([blob], { type: 'application/vnd.ms-excel' });
+              window.navigator.msSaveOrOpenBlob(newBlob, newOptions.fileName);
+              return;
+            }
+            // const render = new FileReader();
+            // render.readAsDataURL(blob);
+            // render.onload = e => {
+            //     const a = document.createElement('a');
+            //     a.download = newOptions.fileName;
+            //     a.href = e.target.result;
+            //     document.body.appendChild(a);
+            //     a.click();
+            //     document.body.removeChild(a);
+            // };
+            const aElem = document.createElement('a');
+            // 将文件流保存到a标签
+            aElem.href = window.URL.createObjectURL(blob);
+            aElem.download = newOptions.fileName;
+            document.body.appendChild(aElem);
+            aElem.onload = function () {
+              window.URL.revokeObjectURL(aElem.href);
+            };
+            aElem.click();
+            document.body.removeChild(aElem); // 下载完成移除元素
+          });
+        }
+      })
+  </script>
+</body>
+
+</html>
