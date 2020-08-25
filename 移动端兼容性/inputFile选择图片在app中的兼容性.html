@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    移动端上传图片时：
+    1.如果没有相机权限，ios依然可以打开相机，但是相机是关闭的，需要通过调用native接口判断是否有相机权限
+    error(没有相机权限)，需要阻止默认事件，e.preventDefault();
+    2.点击 “去设置” ，返回后app会重启
+  </div>
+</body>
+</html>
