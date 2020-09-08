@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function a(x, y, z) {
+      return x + y + z;
+    }
+    function curry(fun) {
+      var num = [];
+      var count = function () {
+        num = num.concat([...arguments]);
+        if (num.length < fun.length) { // 返回一个可以继续调用的函数
+          return count;
+        }
+        var result = fun(...num);
+        num = [];
+        return result;
+      };
+      return count;
+    }
+    var a1 = curry(a);
+    console.log(a1(1)(2)(3));
+    console.log(a1(1, 2)(3));
+    console.log(a1(1)(2, 3));
+    console.log(a1(1, 2, 3));
+  </script>
+</body>
+
+</html>
